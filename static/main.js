@@ -46,16 +46,17 @@ function listing() {
         url: "/listing",
         data: {},
         success: function (response) {
-            let rows = response['challenge_list']
+            let challenge_rows = response['challenge_list']
+            let participants_rows = response['participants_list']
 
-            for (let i = 0; i < rows.length; i++) {
-                let chall_id = rows[i]['chall_id']
-                let challenge_img = rows[i]['challenge_img']
-                let title = rows[i]['title']
+            for (let i = 0; i < challenge_rows.length; i++) {
+                let chall_id = challenge_rows[i]['chall_id']
+                let challenge_img = challenge_rows[i]['challenge_img']
+                let title = challenge_rows[i]['title']
                 //let participants = 10 //certification에서 데이터 가져와야함
-                let start_date = rows[i]['start_date']
-                let end_date = rows[i]['end_date']
-                let content = rows[i]['content']
+                let start_date = challenge_rows[i]['start_date']
+                let end_date = challenge_rows[i]['end_date']
+                let content = challenge_rows[i]['content']
                 console.log(chall_id, challenge_img, title, start_date, end_date, content)
 
                 let final_date = Number(end_date.split('-').join(''))

@@ -1,21 +1,16 @@
-from flask import Flask, render_template, request, jsonify
+from flask import Flask, render_template, request, jsonify, Blueprint
 from werkzeug.utils import secure_filename
 from datetime import datetime
-app = Flask(__name__)
-
-from pymongo import MongoClient
-import certifi
-ca = certifi.where()
-client = MongoClient('mongodb+srv://Mallenge:Mallenge@cluster0.jm38if6.mongodb.net/?retryWrites=true&w=majority', tlsCAFile=ca)
-db = client.Mallenge
+from db import db
+main = Blueprint("main", __name__, url_prefix="/")
 
 # main.html 불러오기
-@app.route('/')
+@main.route('/')
 def home():
    return render_template('main.html')
 
 # challenge 카드 포스트
-@app.route("/posting", methods=["POST"])
+@main.route("/posting", methods=["POST"])
 def posting():
    # challenge 카드에 고유 id 넣어주기
    challenge_list = list(db.challenge.find({}, {'_id': False}))
@@ -50,11 +45,8 @@ def posting():
    return jsonify({'msg': '포스팅 성공!'})
 
 # challenge 카드 전체 리스트 불러오기
-@app.route('/listing', methods=["GET"])
+@main.route('/listing', methods=["GET"])
 def listing():
-   challenge_list = list(db.challenge.find({}, {'_id':False}))
-   return jsonify({'challenge_list': challenge_list})
-
-
-if __name__ == '__main__':
-   app.run('0.0.0.0', port=5000, debug=True)
+   challenge_list = list(db.challenge.find({}, {'_id': False}))
+   participants_list = list(db.participants.find({}, {'_id': False}))
+   return jsonify({'challenge_list': challenge_list, 'participants_list': participants_list})

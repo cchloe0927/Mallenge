@@ -1,12 +1,10 @@
-from pymongo import MongoClient
-import certifi
-ca = certifi.where()
-client = MongoClient('mongodb+srv://Mallenge:Mallenge@cluster0.jm38if6.mongodb.net/?retryWrites=true&w=majority', tlsCAFile=ca)
-db = client.Mallenge
+from flask import Flask
+from main import main
+from mypage import mypage
+app = Flask(__name__)
 
-# 테스트 코드
-# doc = {
-#     'name': 'bob',
-# }
-#
-# db.users.insert_one(doc)
+app.register_blueprint(main)
+app.register_blueprint(mypage)
+
+if __name__ == '__main__':
+    app.run('0.0.0.0', port=5000, debug=True)
