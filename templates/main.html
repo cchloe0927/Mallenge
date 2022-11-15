@@ -24,9 +24,16 @@
 
 <body>
 <!--banner-->
+<nav class="menubar">
+        <a href="#"><img src="../static/logo_en.png" class="menuLogo"></a>
+        <ul class="menuItem">
+            <li><b>닉네임</b>님</li>
+            <button type="button" class="btn btn-outline-dark">로그아웃</button>
+        </ul>
+    </nav>
 
 <!--upload / modal -->
-<button class="uploadbtn" onclick='$("#modal-post").addClass("is-active")'><span class="add">+</span></button>
+<button class="upload-btn" onclick='$("#modal-post").addClass("is-active")'><span class="add">+</span></button>
 <div class="modal" id="modal-post">
     <div class="modal-background" onclick='$("#modal-post").removeClass("is-active")'></div>
     <div class="modal-content">
@@ -39,35 +46,38 @@
                             <div class="control is-expanded">
                                 <div class="file has-name">
                                     <label class="file-label" style="width:100%">
-                                        <input id="place-pic" class="file-input" type="file"
+                                        <input id="challenge_img" class="file-input" type="file"
                                                name="resume">
-                                        <span class="file-cta"><span class="file-icon"><i
-                                                class="fa fa-upload"></i></span>
-                            <span class="file-label">이미지 선택</span>
-                        </span>
+                                        <span class="file-cta"><span class="file-icon">파일</span></span>
                                         <span id="file-name" class="file-name"
                                               style="width:100%;max-width:100%"></span>
                                     </label>
                                 </div>
                             </div>
                         </div>
-                        <div class="field">
-                            <label class="label" for="textarea-contents">간단 소개 부탁드려요!</label>
+                        <div class="field period-input" style="margin-top: 25px">
+                            <div>
+                                <label class="label">시작 날짜</label>
+                                <input id="start-data" type="date" name="start-day">
+                            </div>
+                            <div>
+                                <label class="label">종료 날짜</label>
+                                <input id="end-data" type="date" name="end-day">
+                            </div>
+                        </div>
+                        <div class="field" style="margin-top: 25px">
+                            <label class="label">챌린지 한줄 소개 부탁드려요!</label>
                             <p class="control">
-                    <textarea id="textarea-contents" class="textarea"
+                    <textarea id="contents" class="textarea"
                               placeholder=""></textarea>
                             </p>
                         </div>
-                        <nav class="level is-mobile">
+                        <nav class="level">
                             <div class="level-left">
                             </div>
                             <div class="level-right">
                                 <div class="level-item">
-                                    <a class="button is-post" onclick="posting()">포스팅</a>
-                                </div>
-                                <div class="level-item">
-                                    <a class="button is-sparta is-outlined"
-                                       onclick='$("#modal-post").removeClass("is-active")'>취소</a>
+                                    <a class="button posting-btn" onclick="posting()">포스팅</a>
                                 </div>
                             </div>
                         </nav>
@@ -80,8 +90,7 @@
             onclick='$("#modal-post").removeClass("is-active")'></button>
 </div>
 <section class="section">
-    <div id="post-box" class="container">
-    </div>
+    <div id="post-box" class="container"></div>
 </section>
 
 <!--challenge List-->
@@ -94,6 +103,16 @@
                     <h5 class="card-title">밤샘 코딩<small class="participants">10명 참여중</small></h5>
                     <h6 class="card-text period">기간 <span>202.11.14일-2022.11.18</span></h6>
                     <p class="card-text">밤샘 코딩으로 미니프로젝트를 완성해 보아요~</p>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card h-100">
+                <img src="{{ url_for('static', filename='image/coding.png') }}"> <!--flask img 불러오기-->
+                <div class="card-body">
+                    <h5 class="card-title">밤샘코딩 <small class="participants">10명 참여중</small></h5>
+                    <h6 class="card-text period">기간 <span>202.11.14일-2022.11.18</span></h6>
+                    <p class="card-text">밤샘코딩으로 미니프로젝트를 완성해 보아요~</p>
                 </div>
             </div>
         </div>

@@ -1,13 +1,71 @@
+/*global / banner*/
+@font-face {
+    font-family: 'Pretendard-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+    font-style: normal;
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: 'Pretendard-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+    font-style: normal;
+    font-weight: 700;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    font-family: 'Pretendard';
+}
+
+b {
+    font-weight: 700;
+}
+
+.emphasis {
+    color: #F70511;
+;
+}
+
+.menubar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    align-content: center;
+    padding: 18px 100px 18px 100px;
+    height: 70px;
+    font-size: 18px;
+    box-shadow: 0px 0px 3px 0px gray;
+}
+
+.menuItem {
+    display: flex;
+    margin: 0;
+    align-items: center;
+    list-style: none;
+    gap: 30px;
+}
+
+.menuLogo {
+    width: 184px;
+}
+
+
 /*upload / modal*/
-.uploadbtn {
-    width: 40px;
-    height: 30px;
+.upload-btn {
+    position: fixed;
+    bottom: 40px;
+    right: 40px;
+    width: 45px;
+    height: 45px;
+    font-size: 20px;
     border: 1px solid #F70511;
     background-color: #F70511;
-    border-radius: 5px;
-
-
+    border-radius: 50%;
 }
+
 .add {
     color: white;
     text-align: center;
@@ -16,9 +74,24 @@
     padding-bottom: 10px;
 }
 
+.period-input {
+    display: flex;
+    gap: 100px;
+}
+
+.contents:focus {
+    outline: none;
+}
+
+.posting-btn:hover {
+    border: 1px solid #F70511;
+}
+
 /*challenge*/
 .wrap {
-    padding: 50px;
+    margin: auto;
+    width: 1400px;
+    padding: 30px;
 }
 
 .participants {
@@ -29,4 +102,5 @@
 .period {
     font-weight: bold;
     margin-top: 20px;
+    margin-bottom: 10px;
 }
