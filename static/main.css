@@ -74,9 +74,20 @@ b {
     padding-bottom: 10px;
 }
 
+.title {
+    border: 1px solid #dbdbdb;
+    font-size: 20px;
+    font-weight: normal;
+    height: 35px;
+}
+
+.title:focus {
+    outline: none;
+}
+
 .period-input {
     display: flex;
-    gap: 100px;
+    gap: 50px;
 }
 
 .contents:focus {
