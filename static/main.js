@@ -55,7 +55,8 @@ function listing() {
 
                 let temp_html = `<div class="col">
                             <div class="card h-100">
-                                <img src="{{ url_for('static', filename='challenge_img/${challenge_img}') }}"> <!--flask img 불러오기-->
+                                <img src="../static/challenge_img/${challenge_img}" class="challenge_img">
+                                <!--<img src="{{ url_for('static', filename='challenge_img/${challenge_img}') }}">--> <!--HTML에서 되는데 JS에서 작성 하면 안됨! 경로때문?-->
                                 <div class="card-body">
                                     <h5 class="card-title">${title}<small class="participants">10명 참여중</small></h5>
                                     <h6 class="card-text period">기간 <span>${start_date}~${end_date}</span></h6>

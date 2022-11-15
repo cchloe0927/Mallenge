@@ -105,6 +105,10 @@ b {
     padding: 30px;
 }
 
+.challenge_img {
+    height: 200px;
+}
+
 .participants {
     float: right;
     color: #F70511;
