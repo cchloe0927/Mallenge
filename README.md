@@ -7,6 +7,11 @@ ___
 
 <br />
 
+## 📺 실행화면
+
+
+<br />
+
 ## 👤 팀원 소개
 + 김예진 [yejin0718](https://github.com/yejin0718)
 + 이현정 [cchloe0927](https://github.com/cchloe0927)
@@ -39,19 +44,13 @@ ___
 
 <br />
 
-## 📺 실행화면
-+  결과물 영상
+## 🗂 DB 설계
+
+<img width="600" alt="스크린샷 2022-11-15 오후 5 56 00" src="https://user-images.githubusercontent.com/96729804/201874915-c8d51788-a553-4336-8bdd-b4950ec8ac11.png">
 
 <br />
 
-## 📷 캡쳐
-+ 로그인 화면
+## 🧮 API 설계
 
-
-+ 메인 화면
-
-
-+ 디테일 화면
-
-
-+ 마이페이지
+<img width="871" alt="스크린샷 2022-11-15 오후 5 52 16" src="https://user-images.githubusercontent.com/96729804/201875118-a72dbea4-ade6-42dd-915f-ab355a96d0ba.png">
+<img width="861" alt="스크린샷 2022-11-15 오후 5 52 25" src="https://user-images.githubusercontent.com/96729804/201875129-5b76bcc1-2c36-4bc4-82eb-7d6d64bf5507.png">
