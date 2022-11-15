@@ -1,58 +1,3 @@
-/*global / banner*/
-@font-face {
-    font-family: 'Pretendard-Regular';
-    src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
-    font-style: normal;
-    font-weight: 400;
-}
-
-@font-face {
-    font-family: 'Pretendard-Regular';
-    src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
-    font-style: normal;
-    font-weight: 700;
-}
-
-* {
-    margin: 0;
-    padding: 0;
-    text-decoration: none;
-    font-family: 'Pretendard';
-}
-
-b {
-    font-weight: 700;
-}
-
-.emphasis {
-    color: #F70511;
-;
-}
-
-.menubar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    align-content: center;
-    padding: 18px 100px 18px 100px;
-    height: 70px;
-    font-size: 18px;
-    box-shadow: 0px 0px 3px 0px gray;
-}
-
-.menuItem {
-    display: flex;
-    margin: 0;
-    align-items: center;
-    list-style: none;
-    gap: 30px;
-}
-
-.menuLogo {
-    width: 184px;
-}
-
-
 /*upload / modal*/
 .upload-btn {
     position: fixed;
@@ -67,11 +12,17 @@ b {
 }
 
 .add {
+    position: fixed;
+    bottom: 25px;
+    right: 50px;
     color: white;
     text-align: center;
-    font-size: 20px;
+    font-size: 40px;
     font-weight: bold;
     padding-bottom: 10px;
+}
+.add:hover {
+    transform: scale(1.2);
 }
 
 .title {
@@ -105,11 +56,37 @@ b {
     padding: 30px;
 }
 
+.card-box {
+    position: relative;
+}
+.card-box:hover {
+    cursor:pointer;
+    transform: scale(1.1);
+}
+
+.disabled {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -60%);
+    z-index: 1;
+    font-size: 20px;
+    font-weight: bold;
+    color:#323232;
+}
+
 .challenge_img {
     height: 200px;
 }
 
+.card-title {
+    font-size: 18px;
+    font-weight: bold;
+}
+
 .participants {
+    font-size: 16px;
+    font-weight: bold;
     float: right;
     color: #F70511;
 }
