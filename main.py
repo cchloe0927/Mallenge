@@ -17,6 +17,10 @@ def home():
 # challenge 카드 포스트
 @app.route("/posting", methods=["POST"])
 def posting():
+   # challenge 카드에 고유 id 넣어주기
+   challenge_list = list(db.challenge.find({}, {'_id': False}))
+   chall_Id = len(challenge_list) + 1
+
    title = request.form["title_give"]
    start_date = request.form["start_date_give"]
    end_date = request.form["end_date_give"]
@@ -39,6 +43,7 @@ def posting():
       "start_date": start_date,
       "end_date": end_date,
       "content": content,
+      "chall_Id": int(chall_Id),
    }
 
    db.challenge.insert_one(doc)
