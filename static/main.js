@@ -47,7 +47,6 @@ function listing() {
         data: {},
         success: function (response) {
             let challenge_rows = response['challenge_list']
-            let participants_rows = response['participants_list']
 
             for (let i = 0; i < challenge_rows.length; i++) {
                 let chall_id = challenge_rows[i]['chall_id']
@@ -73,7 +72,7 @@ function listing() {
                     temp_html = `<div class="col card-box">
                             <div class="card h-100 cards" onclick="location.href='detail?challange=${chall_id}'">
                                 <img src="../static/challenge_img/${challenge_img}" class="challenge_img">
-                                <!--<img src="{{ url_for('static', filename='challenge_img/${challenge_img}') }}">--> <!--HTML에서 되는데 JS에서 작성 하면 안됨! 경로때문?-->
+                                <!--<img src="{{ url_for('static', filename='challenge_img/${challenge_img}') }}">--> <!--HTML에서 되는데 JS에서 작성 하면 안됨! -> jinja언어는 js에서 사용할 수 없음-->
                                 <div class="card-body">
                                     <h5 class="card-title">${title}<small class="participants">10명 참여</small></h5>
                                     <h6 class="card-text period">기간 <span>${start_date}~${end_date}</span></h6>
