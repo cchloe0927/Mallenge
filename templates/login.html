@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
+    <title>Title</title>
+
+  <style>
+    .my-box{
+        border : 1px solid;
+        padding : 60px;
+        background-color: #f5f5f5;
+        width: 400px;
+        height: 387px;
+        margin-top: 164px;
+        margin-left: 145px;
+        border-radius: 80px;
+    }
+     .circle {
+        margin: 0 auto;
+        margin-top: -922px;
+        width: 250px;
+        height: 250px;
+        background-color: gray;
+        border-radius: 50%;
+    }
+    .id_back {
+        margin-top: 64px;
+        margin-left: 218px;
+    }
+    .pwd_back {
+        margin-top: 54px;
+        margin-left: 220px;
+    }
+    .login_btn_back {
+        margin-top: 53px;
+        margin-left: 258px;
+    }
+    .signup_btn_back {
+        margin-top: -57px;
+        margin-left: 436px;
+    }
+    .l_text_back {
+        margin-top: -494px;
+        margin-left: 392px;
+    }
+    .login_btn {
+        width: 138px;
+        height: 55px;
+        border-radius: 20px;
+    }
+    .signup_btn {
+        width: 138px;
+        height: 55px;
+        border-radius: 20px;
+    }
+  </style>
+
+    <script>
+        {% if msg %}
+                alert("{{ msg }}")
+            {% endif %}
+            // ['쿠키'라는 개념에 대해 알아봅시다]
+            // 로그인을 구현하면, 반드시 쿠키라는 개념을 사용합니다.
+            // 페이지에 관계없이 브라우저에 임시로 저장되는 정보입니다. 키:밸류 형태(딕셔너리 형태)로 저장됩니다.
+            // 쿠키가 있기 때문에, 한번 로그인하면 네이버에서 다시 로그인할 필요가 없는 것입니다.
+            // 브라우저를 닫으면 자동 삭제되게 하거나, 일정 시간이 지나면 삭제되게 할 수 있습니다.
+            function login() {
+                $.ajax({
+                    type: "POST",
+                    url: "/api/login",
+                    data: {id_give: $('#id').val(), pw_give: $('#pwd').val()},
+                    success: function (response) {
+                        console.log(response);
+                        if (response['result'] == 'success') {
+                            // 로그인이 정상적으로 되면, 토큰을 받아옵니다.
+                            // 이 토큰을 mytoken이라는 키 값으로 쿠키에 저장합니다.
+                            $.cookie('mytoken', response['token']);
+
+                            alert('로그인 완료!')
+                            window.location.href = '/main'
+                        } else {
+                            // 로그인이 안되면 에러메시지를 띄웁니다.
+                            alert(response['msg'])
+                        }
+                    }
+                })
+            }
+    </script>
+</head>
+<body>
+    <div class="my-box">
+    </div>
+    <div class="l_text_back">
+        <h3>login</h3>
+    </div>
+    <div class="id_back">
+        <input id="id" type="text" style="width: 364px; height: 68px;">
+    </div>
+    <div class="pwd_back">
+        <input id="pwd" type="text" style="width: 364px; height: 68px;">
+    </div>
+    <div class="login_btn_back">
+        <button class="login_btn" onclick="login()">로그인</button>
+    </div>
+    <div class="signup_btn_back">
+        <button class="signup_btn" onclick="location.href='/signup'">회원가입</button>
+    </div>
+</body>
+</html>
