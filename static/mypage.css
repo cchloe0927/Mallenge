@@ -58,3 +58,14 @@ progress {
     width: 95%;
     margin: 50px auto 0 auto;
 }
+
+/*100퍼 달성한 챌린지에 도장 찍기*/
+.sucessimg{
+    position: relative;
+}
+
+.sucess {
+    float: left;
+    position: absolute;
+    width: 120px;
+}
