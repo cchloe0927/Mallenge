@@ -32,8 +32,8 @@ function posting() {
         contentType: false,
         processData: false,
         success: function (response) {
-                alert(response["msg"])
-                window.location.reload()
+            alert(response["msg"])
+            window.location.reload()
         }
     });
 }

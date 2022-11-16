@@ -4,6 +4,7 @@ from mypage import mypage
 from challengedetail import challengedetail
 from flask import Flask, render_template, jsonify, request, session, redirect, url_for
 from db import db
+from config import DBURL
 app = Flask(__name__)
 
 # JWT 토큰을 만들 때 필요한 비밀문자열입니다. 아무거나 입력해도 괜찮습니다.
