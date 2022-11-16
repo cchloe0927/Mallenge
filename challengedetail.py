@@ -1,28 +1,26 @@
-from flask import Flask, render_template, request, jsonify
-app = Flask(__name__)
+from flask import Flask, render_template, request, jsonify, Blueprint
+challengedetail= Blueprint("challengedetail", __name__, url_prefix="/challengedetail")
+from db import db
 
-from pymongo import MongoClient
-client = MongoClient('mongodb+srv://Mallenge:Mallenge@cluster0.jm38if6.mongodb.net/?retryWrites=true&w=majority')
-db = client.Mallenge
 
 # from bson.json_util import dumps
 
 
-@app.route('/challengedetail')
+@challengedetail.route('/')
 def home():
     return render_template('challengedetail.html')
 
 
-@app.route("/challenge", methods=["GET"])
+@challengedetail.route("/challenge", methods=["GET"])
 def challenge_get():
-    one_challenge = db.challenge.find_one({'chall_id': 2},{'_id' : False})
+    one_challenge = db.challenge.find_one({'chall_id': 1},{'_id' : False})
 
     # print(one_challenge)
 
     return jsonify({'one_challenge': one_challenge})
 
 
-@app.route("/my_challenge", methods=["POST"])
+@challengedetail.route("/my_challenge", methods=["POST"])
 def partici_post():
     # mychall_id_receive = request.form['mychall_id_give']
     chall_id_receive = request.form['chall_id_give']
@@ -43,7 +41,7 @@ def partici_post():
 #
 #
 #
-@app.route("/certification", methods=["POST"])
+@challengedetail.route("/certification", methods=["POST"])
 def certi_post():
     cer_id_list = list(db.certification.find({}, {'_id': False}))
     cer_id_made = len(cer_id_list) + 1
@@ -82,7 +80,7 @@ def certi_post():
     return jsonify({'msg':'인증 완료!'})
 
 
-@app.route("/certification", methods=["GET"])
+@challengedetail.route("/certification", methods=["GET"])
 def certi_get():
     certi_list = list(db.certification.find({}, {'_id' : False}))
     print(certi_list)
@@ -90,6 +88,3 @@ def certi_get():
     return jsonify({'certilist': certi_list})
 
 
-
-if __name__ == '__main__':
-   app.run('0.0.0.0', port=5000, debug=True)
