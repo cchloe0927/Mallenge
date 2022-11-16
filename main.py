@@ -42,6 +42,7 @@ def posting():
       "participants": 0,
    }
 
+
    db.challenge.insert_one(doc)
    return jsonify({'msg': '포스팅 성공!'})
 

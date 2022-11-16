@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
+    <title>Title</title>
+
+  <style>
+    .my-box{
+        border : 1px solid;
+        padding : 60px;
+        background-color: #f5f5f5;
+        width: 400px;
+        height: 387px;
+        margin-top: 164px;
+        margin-left: 145px;
+        border-radius: 80px;
+    }
+     .circle {
+        margin: 0 auto;
+        margin-top: -644px;
+        width: 217px;
+        height: 217px;
+        background-color: gray;
+        border-radius: 50%;
+    }
+    .id_back {
+        margin-top: 37px;
+        margin-left: 218px;
+    }
+    .nick_back {
+        margin-top: 24px;
+        margin-left: 220px;
+    }
+    .pwd_back {
+        margin-top: 28px;
+        margin-left: 220px;
+    }
+    .pcheck_back {
+        margin-top: 27px;
+        margin-left: 220px;
+    }
+    .login_btn_back {
+        margin-top: 48px;
+        margin-left: 228px;
+    }
+    .signup_btn_back {
+        margin-top: 39px;
+        margin-left: 329px;
+    }
+    .l_text_back {
+        margin-top: -503px;
+        margin-left: 380px;
+    }
+    .login_btn {
+        width: 148px;
+        height: 50px;
+        border-radius: 20px;
+    }
+    .signup_btn {
+        width: 148px;
+        height: 50px;
+        border-radius: 20px;
+        background-color: #F70511;
+    }
+  </style>
+    <script>
+        // 간단한 회원가입 함수입니다.
+            // 아이디, 비밀번호, 닉네임을 받아 DB에 저장합니다.
+            function register() {
+                $.ajax({
+                    type: "POST",
+                    url: "/api/register",
+                    data: {
+                        id_give: $('#id').val(),
+                        pw_give: $('#pwd').val(),
+                        nickname_give: $('#nick').val()
+                    },
+                    success: function (response) {
+                        if (response['result'] == 'success') {
+                            alert('회원가입이 완료되었습니다.')
+                            window.location.href = '/login'
+                        } else {
+                            alert(response['msg'])
+                        }
+                    }
+                })
+            }
+    </script>
+</head>
+<body>
+    <div class="logo1">
+        <img src="/image/logo_en.png" alt="">
+    </div>
+    <div class="my-box">
+    </div>
+
+    <div class="l_text_back">
+        <h3>signup</h3>
+    </div>
+    <div class="name_   id">
+
+    </div>
+    <div class="id_back">
+        <input id="id" placeholder="아이디" type="text" style="width: 380px; height: 44px;">
+    </div>
+    <div class="nick_back">
+        <input id="nick" placeholder="닉네임" type="text" style="width: 380px; height: 44px;">
+    </div>
+    <div class="pwd_back">
+        <input id="pwd" placeholder="비밀번호" type="password" style="width: 380px; height: 44px;">
+    </div>
+    <div class="pcheck_back">
+        <input id="pcheck" placeholder="비밀번호 확인" type="text" style="width: 380px; height: 44px;">
+    </div>
+
+    <div class="signup_btn_back">
+        <button class="signup_btn" onclick="register()">회원가입</button>
+    </div>
+</body>
+</html>

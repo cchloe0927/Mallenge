@@ -16,7 +16,10 @@ function listing() {
         success: function (response) {
             console.log(response)
             let challenge_rows = response['challenge_list']
+            let certification_list = response['certification_list']
+            let loginuser_id = "다혜"
 
+            //챌린지값 뽑아냄
             for (let i = 0; i < challenge_rows.length; i++) {
                 let chall_id = challenge_rows[i]['chall_id']
                 let challenge_img = challenge_rows[i]['challenge_img']
@@ -24,8 +27,8 @@ function listing() {
                 //let participants = 10 //certification에서 데이터 가져와야함
                 let start_date = challenge_rows[i]['start_date']
                 let end_date = challenge_rows[i]['end_date']
-                let content = challenge_rows[i]['content']
-                // console.log(chall_id, challenge_img, title, start_date, end_date, content)
+                //let user_id = challenge_rows[i]['user_id']
+                console.log(chall_id, challenge_img, title, start_date, end_date)
 
                 let final_date = Number(end_date.split('-').join(''))
                 //console.log(final_date)
@@ -45,7 +48,8 @@ function listing() {
                                 <div class="card-body">
                                     <h5 class="card-title">${title}<small class="participants">10명 참여</small></h5>
                                     <h6 class="card-text period">기간 <span>${start_date}~${end_date}</span></h6>
-                                    <p class="card-text">${content}</p>
+                                    <progress value="20" max="100"></progress>
+                                    <p class="card-text">20% 달성</p>
                                 </div>
                             </div>
                         </div>`
@@ -57,7 +61,8 @@ function listing() {
                                 <div class="card-body">
                                     <h5 class="card-title">${title}<small class="participants">10명 참여</small></h5>
                                     <h6 class="card-text period">기간 <span>${start_date}~${end_date}</span></h6>
-                                    <p class="card-text">${content}</p>
+                                    <progress value="20" max="100"></progress>
+                                    <p class="card-text">20% 달성</p>
                                 </div>
                             </div>
                         </div>`
