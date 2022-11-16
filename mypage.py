@@ -30,9 +30,13 @@ def listing():
       user_id = payload['id']
 
       challenge_list = list(db.challenge.find({}, {'_id': False}))
+      #챌린지값 보내기
       certification_list = list(db.certification.find({}, {'_id': False}))
+      #코멘트값 보내기
+      my_challenge_list = list(db.my_challenge.find({}, {'_id': False}))
+      # 참여한 챌린지 보내기
 
-      return jsonify({'challenge_list': challenge_list, 'certification_list': certification_list, 'user_id': user_id})
+      return jsonify({'challenge_list': challenge_list, 'certification_list': certification_list, 'my_challenge_list' : my_challenge_list, 'user_id': user_id})
    except jwt.ExpiredSignatureError:
       return jsonify({'result': 'fail', 'msg': '로그인이 만료되었습니다.'})
    except jwt.exceptions.DecodeError:
