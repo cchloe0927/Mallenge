@@ -36,6 +36,11 @@ def listing():
       my_challenge_list = list(db.my_challenge.find({}, {'_id': False}))
       # 참여한 챌린지 보내기
 
+      #find로 마이챌린지에 있는 user_id가 현재 지금 유저아이디랑 같은 걸 불러오고 챌린지 아이디같으면
+      #챌 아이디값 배열로 만들어서 챌린지 아이디랑 같으면
+
+
+
       return jsonify({'challenge_list': challenge_list, 'certification_list': certification_list, 'my_challenge_list' : my_challenge_list, 'user_id': user_id})
    except jwt.ExpiredSignatureError:
       return jsonify({'result': 'fail', 'msg': '로그인이 만료되었습니다.'})
