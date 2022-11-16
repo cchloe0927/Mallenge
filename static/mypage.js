@@ -50,17 +50,17 @@ function listing() {
                 let dateNumber = getDateDiff(start_date, end_date) + 1
                 //console.log(dateNumber)
 
-            //my_challenged에서 chall_id데이터 추출 > 참가자수 구하기
-            let participants = 0;
-            for (let j=0 ; j<my_challenge_rows.length; j++) {
-                let data = my_challenge_rows[j]
-                let chall_id = my_challenge_rows[j]
-                //console.log(data)
-                //console.log("data:", data["chall_id"]) //키값을 가져올 때는 ""로
-                if (data["chall_id"] == chall_id) {
-                    participants++
+            //my_challenged에서 chall_id데이터 추출
+                let participants = 0;
+                for (let j=0 ; j<my_challenge_rows.length; j++) {
+                    let data = my_challenge_rows[j]
+                    //console.log("data:", data["chall_id"]) //키값을 가져올 때는 ""로
+                    if (data["chall_id"] == chall_id) {
+                        participants++
+                    }
                 }
-            }
+                //console.log("chall_id :", chall_id, "participants :", participants)
+
                 let final_date = Number(end_date.split('-').join(''))
                 //console.log(final_date)
                 const date = new Date();
@@ -114,7 +114,7 @@ function joinchall() {
         success: function (response) {
             //console.log(response)
             let challenge_rows = response['challenge_list']
-            let certification_list = response['certification_list']
+            let certification_rows = response['certification_list']
             let my_challenge_rows = response['my_challenge_list'] //my_challenge에서 데이터 가져옴
             let loginuser_id = response['user_id']
 
@@ -125,7 +125,7 @@ function joinchall() {
             const new_my_challenge_rows = JSON.parse(my_challenge_rows).filter(function (element) {
                 return element.user_id == loginuser_id;
             });
-            console.log(new_my_challenge_rows)
+            //console.log(new_my_challenge_rows)
 
             //challenge_rows = JSON.stringify(challenge_rows);
 
@@ -137,6 +137,8 @@ function joinchall() {
                 allchallidArray.push(allchallid)
             }
 
+            //console.log(allchallidArray)
+
             //챌린지 db에서 마이챌린지 챌린지값이랑 챌린지값이 같은 데이터를 배열로 만듦
             let challengeArray = []
             for ( let i = 0; i < allchallidArray.length; i++) {
@@ -146,44 +148,53 @@ function joinchall() {
                     }
                 }
             }
-            console.log(challengeArray)
-            //console.log(new_my_challenge_rows[1]['chall_id'])
-
-            const new_challenge_rows = JSON.parse(challenge_rows).filter(function (element) {
-                return element.chall_id == new_my_challenge_rows['chall_id'];
-            });
-            console.log(new_challenge_rows)
-
-
-
-
-            //필터함수로 chall_id가 똑같은 값의 챌린지를 뽑아냄
-            // const new_my_challenge_rows = JSON.parse(my_challenge_rows).filter(function (element) {
-            //     return element.user_id == loginuser_id;
-            // });
-
-            //console.log(new_my_challenge_rows);
-
-            //my_challenged에서 chall_id데이터 추출
-            let participants = 0;
-            for (let j=0 ; j<my_challenge_rows.length; j++) {
-                let data = my_challenge_rows[j]
-                let chall_id = my_challenge_rows[j]
-                //console.log(data)
-                //console.log("data:", data["chall_id"]) //키값을 가져올 때는 ""로
-                if (data["chall_id"] == chall_id) {
-                    participants++
+            //console.log(challengeArray)
+            //확인 db에서 마이챌린지 챌린지값이랑 챌린지값이 같은 데이터를 배열로 만듦
+            let certiArray = []
+            for ( let i = 0; i < allchallidArray.length; i++) {
+                for ( let j = 0; j < certification_rows.length; j++) {
+                    if (allchallidArray[i] == certification_rows[j]['chall_id']) {
+                   certiArray.push(certification_rows[j])
+                    }
                 }
             }
+            //console.log(certiArray)
 
+            //필터함수로 user_id가 똑같은 값의 챌린지만 뽑아냄
+            certiArray = JSON.stringify(certiArray);
+            const new_certiArray = JSON.parse(certiArray).filter(function (element) {
+                return element.user_id == loginuser_id;
+            });
+            //console.log(new_certiArray)
+
+            let obj = {}
+            for ( let i = 0; i < new_certiArray.length; i++) {
+                let keyname = new_certiArray[i]["chall_id"]
+                if (obj.hasOwnProperty(keyname)) { //객체 안에 키값이 있냐
+                    obj[keyname] = obj[keyname] + 1
+                } else {
+                    obj[keyname] = 1
+                }
+            }
+            console.log("obj : ", obj)
+            // const new_challenge_rows = JSON.parse(challenge_rows).filter(function (element) {
+            //     return element.chall_id == new_my_challenge_rows['chall_id'];
+            // });
+            // console.log(new_challenge_rows)
+
+
+
+            //console.log("challengeArray :", challengeArray)
             //챌린지값 뽑아냄
-            for (let i = 0; i < new_challenge_rows.length; i++) {
-                let chall_id = new_challenge_rows[i]['chall_id']
-                let challenge_img = new_challenge_rows[i]['challenge_img']
-                let title = new_challenge_rows[i]['title']
+            for (let i = 0; i < challengeArray.length; i++) {
+                let chall_id = challengeArray[i]['chall_id']
+                let challenge_img = challengeArray[i]['challenge_img']
+                let title = challengeArray[i]['title']
                 //let participants = 10 //certification에서 데이터 가져와야함
-                let start_date = new_challenge_rows[i]['start_date']
-                let end_date = new_challenge_rows[i]['end_date']
+                let start_date = challengeArray[i]['start_date']
+                let end_date = challengeArray[i]['end_date']
+
+
 
                 //전체 일수 구하기
                 const getDateDiff = (d1, d2) => {
@@ -194,7 +205,19 @@ function joinchall() {
                   return Math.abs(diffDate / (1000 * 60 * 60 * 24)); // 밀리세컨 * 초 * 분 * 시 = 일
                 }
                 let dateNumber = getDateDiff(start_date, end_date) + 1
-                console.log(dateNumber)
+
+                if (obj[chall_id] === undefined) {
+                    obj[chall_id] === 0
+                    return
+                }
+
+                let datepercent = Math.floor(obj[chall_id] / dateNumber * 100)
+                console.log("챌린지아이디 :", chall_id)
+                console.log("특정 챌린지 전체 기간 :", dateNumber)
+                console.log("특정 챌린지의 달성 일수 :", obj[chall_id])
+                console.log("% : ", datepercent )
+                console.log("-----------------------")
+                //전체 일수 구하기 끝
 
                 let final_date = Number(end_date.split('-').join(''))
                 //console.log(final_date)
@@ -205,6 +228,17 @@ function joinchall() {
                 const today = Number(year+month+day);
                 //console.log(today)
 
+                //my_challenged에서 chall_id데이터 추출
+                // let participants = 0;
+                // for (let j=0 ; j<my_challenge_rows.length; j++) {
+                //     let data = my_challenge_rows[j]
+                //     //console.log("data:", data["chall_id"]) //키값을 가져올 때는 ""로
+                //     if (data["chall_id"] == chall_id) {
+                //         participants++
+                //     }
+                // }
+                // console.log("chall_id :", chall_id, "participants :", participants)
+
                 let temp_html = ``
                 if (today <= final_date) {
                     temp_html = `<div class="col card-box">
@@ -212,10 +246,10 @@ function joinchall() {
                                 <img src="../static/challenge_img/${challenge_img}" class="challenge_img">
                                 <!--<img src="{{ url_for('static', filename='challenge_img/${challenge_img}') }}">--> <!--HTML에서 되는데 JS에서 작성 하면 안됨! 경로때문?-->
                                 <div class="card-body">
-                                    <h5 class="card-title">${title}<small class="participants">${participants}명 참여</small></h5>
+                                    <h5 class="card-title">${title}<small class="participants"></small></h5>
                                     <h6 class="card-text period">기간 <span>${start_date}~${end_date}</span></h6>
-                                    <progress value="20" max="100"></progress>
-                                    <p class="card-text">20% 달성</p>
+                                    <progress value="${obj[chall_id]}" max="${dateNumber}"></progress>
+                                    <p class="card-text">${datepercent}% 달성</p>
                                 </div>
                             </div>
                         </div>`
@@ -225,10 +259,10 @@ function joinchall() {
                             <div class="card h-100" style="opacity: 55%" onclick="disabledCard()">
                                 <img src="../static/challenge_img/${challenge_img}" class="challenge_img">
                                 <div class="card-body">
-                                    <h5 class="card-title">${title}<small class="participants">10명 참여</small></h5>
+                                    <h5 class="card-title">${title}<small class="participants"></small></h5>
                                     <h6 class="card-text period">기간 <span>${start_date}~${end_date}</span></h6>
-                                    <progress value="20" max="100"></progress>
-                                    <p class="card-text">20% 달성</p>
+                                    <progress value="${obj[chall_id]}" max="${dateNumber}"></progress>
+                                    <p class="card-text">${datepercent}% 달성</p>
                                 </div>
                             </div>
                         </div>`
