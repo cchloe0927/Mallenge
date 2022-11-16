@@ -6,11 +6,24 @@
 $(document).ready(function(){
           display();
           show_certi();
-        });
+})
 
-// $(document).ready(function(){
-//           show_certi();
-//         });
+
+    const param = window.location.search;
+    const paramData = new URLSearchParams(param)
+    const challenge_card_id = paramData.get('challenge')
+    console.log(param, paramData, challenge_card_id)
+
+
+//           $.ajax({
+//             type: "GET",
+//             url: "/challengedetail/my_challenge",
+//             data: {challenge : challenge_card_id},
+//             success: function (response) {
+//         };
+// })
+
+
 
 //참가하기 눌렀을 때
 function open_box(){
@@ -18,7 +31,7 @@ function open_box(){
         $.ajax({
             type: 'POST',
             url: '/challengedetail/my_challenge',
-            data: {'chall_id_give': 10, 'user_id_give':100},
+            data: {'chall_id_give': challenge_card_id},
             success: function (response) {
                 alert(response['msg'])
                 window.location.reload()
@@ -34,11 +47,9 @@ function open_box(){
 //     $('#cer_box').hide()
 // }
 
+//화면 진입 했을때
 function display() {
-    const param = window.location.search;
-    const paramData = new URLSearchParams(param)
-    const challenge_card_id = paramData.get('challenge')
-    console.log(param, paramData, challenge_card_id)
+
 
     $.ajax({
         type: 'GET',
@@ -61,7 +72,7 @@ function display() {
             let temp_html = `
                                     
                                         <div class="para">
-                                            <img src="${one_image}">
+                                            <img src="../static/challenge_img/${one_image}">
                                             <div class="vertical">
                                                 <p>${one_title}</p>
                                                 <p>기간 : ${one_s_date} ~ ${one_e_date}</p>
@@ -80,11 +91,12 @@ function display() {
     })
 }
 
+//인증댓글 보여주기
 function show_certi() {
         $.ajax({
             type: "GET",
             url: "/challengedetail/certification",
-            data: {},
+            data: {challenge : challenge_card_id},
             success: function (response) {
 
                 console.log(response)
@@ -111,22 +123,25 @@ function show_certi() {
     }
 
 
-
+//댓글 인증 달기
 function save_certi() {
-        // let cer_id = 12
+
         let comment = $('#comment').val()
-        let user_id = 100
-        let chall_id = 10
-        let date = "22-11-15"
+        // let user_id = 100
+        const today = new Date();
+        const year = today.getFullYear();
+        const month = ("0" + (1 + today.getMonth())).slice(-2);
+        const day = ("0" + today.getDate()).slice(-2);
+        const date = Number(year+month+day);
+
 
         $.ajax({
             type: 'POST',
             url: '/challengedetail/certification',
             data: {
-                    // 'cer_id_give' : cer_id,
                     'comment_give': comment,
-                    'user_id_give' : user_id,
-                    'chall_id_give' : chall_id,
+                    // 'user_id_give' : user_id,
+                    'chall_id_give' : challenge_card_id,
                     'date_give' : date},
             success: function (response) {
                 alert(response['msg'])
