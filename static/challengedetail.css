@@ -1,0 +1,64 @@
+
+
+@font-face {
+            font-family: 'Pretendard-Regular';
+            src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+            font-style: normal;
+            font-weight: 400;
+        }
+
+        @font-face {
+            font-family: 'Pretendard-Regular';
+            src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+            font-style: normal;
+            font-weight: 700;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            text-decoration: none;
+            font-family: 'Pretendard';
+        }
+
+        .detailbox{
+
+            background-color: darkgrey;
+
+
+            width : 80%;
+            max-width: 800px;
+            height : 300px;
+
+            margin : 20px auto 0px auto;
+        }
+        .para{
+
+
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .vertical{
+            margin: auto auto auto 10px;
+        }
+
+        .description{
+            margin : 10px auto auto 10px;
+        }
+
+        .certibox{
+            width : 80%;
+            max-width: 800px;
+
+            margin : 20px auto 20px auto;
+        }
+
+        .certilist{
+            width : 80%;
+            max-width: 800px;
+
+            margin : 40px auto 20px auto;
+        }
