@@ -5,10 +5,6 @@ from db import db
 main = Blueprint("main", __name__, url_prefix="/")
 
 # main.html 불러오기
-@main.route('/')
-def home():
-   return render_template('main.html')
-
 # challenge 카드 포스트
 @main.route("/posting", methods=["POST"])
 def posting():
