@@ -13,7 +13,9 @@ def home():
 
 @challengedetail.route("/challenge", methods=["GET"])
 def challenge_get():
-    one_challenge = db.challenge.find_one({'chall_id': 1},{'_id' : False})
+    challenge_card_id = request.args.get('challenge')
+    print(challenge_card_id)
+    one_challenge = db.challenge.find_one({'chall_id': int(challenge_card_id)},{'_id' : False})
 
     # print(one_challenge)
 

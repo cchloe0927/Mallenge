@@ -90,7 +90,7 @@ function listing() {
                 let temp_html = ``
                 if (today <= final_date) {
                     temp_html = `<div class="col card-box">
-                            <div class="card h-100 cards" onclick="location.href='detail?challange=${chall_id}'">
+                            <div class="card h-100 cards" onclick="location.href='challengedetail?challenge=${chall_id}'">
                                 <img src="../static/challenge_img/${challenge_img}" class="challenge_img">
                                 <!--<img src="{{ url_for('static', filename='challenge_img/${challenge_img}') }}">--> <!--HTML에서 되는데 JS에서 작성 하면 안됨! -> jinja언어는 js에서 사용할 수 없음-->
                                 <div class="card-body">
