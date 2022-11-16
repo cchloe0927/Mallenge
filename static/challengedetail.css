@@ -21,10 +21,22 @@
             font-family: 'Pretendard';
         }
 
+        .topbar{
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .bar-btn{
+            margin : 10px 30px 10px auto;
+        }
+
+
         .detailbox{
 
-            background-color: darkgrey;
-
+            /*background-color: darkgrey;*/
+            border : 1px solid darkgray;
 
             width : 80%;
             max-width: 800px;

@@ -20,54 +20,68 @@
 
 </head>
 <body>
-    <div class="detailbox" id="detail-box">
-<!--        <div class="para">-->
-<!--&lt;!&ndash;            <img src="">&ndash;&gt;-->
-<!--            <div class="vertical">-->
-<!--                <p>{챌린지명}</p>-->
-<!--                <p>기간 : {startdate} ~ {enddate}까지</p>-->
-<!--                <p>참가 인원 : {participants} 명</p>-->
-<!--                <button onclick="open_box()" type="button" class="btn btn-danger">참가하기</button>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--        <div class="description">-->
-<!--            <p>챌린지 설명</p>-->
-<!--            <p>{챌린지 소개하는 짧은 설명}</p>-->
-<!--        </div>-->
-    </div>
 
-    <div class="certibox" id="cer_box">
-        <p>챌린지 성공 인증하기</p>
-        <div class="input-group mb-3">
-            <input type="text" class="form-control" id="comment" placeholder="인증 메세지를 작성하세요" aria-label="Recipient's username"
-                   aria-describedby="button-addon2">
-            <button onclick="save_certi()" class="btn btn-outline-secondary" type="button" id="button-addon2">인증</button>
-        </div>
+<div class="topbar">
+    <a href="#"><img src="static/image/logo_en.png" class="logo" onclick="reload()"></a>
+    <div class="bar-btn">
+        <h5> 유저아이디 </h5>
+        <button type="button" class="btn btn-primary" onclick="window.location.href = '/index2'">마이페이지</button>
+        <button type="button" class="btn btn-dark" onclick="window.location.href = '/index3'">로그아웃</button>
     </div>
+</div>
 
-    <div class="certilist">
-        <p>인증 기록</p>
-        <table class="table" id="certitable">
-<!--            <thead>-->
-<!--            <tr>-->
-<!--                <th scope="col">img</th>-->
-<!--                <th scope="col">닉네임</th>-->
-<!--                <th scope="col">인증메세지</th>-->
-<!--            </tr>-->
-<!--            </thead>-->
-            <tbody>
-<!--            <tr>-->
-<!--                <th scope="row">img1</th>-->
-<!--                <td>JIN</td>-->
-<!--                <td>인증했다!!!</td>-->
-<!--            </tr>-->
-<!--            <tr>-->
-<!--                <th scope="row">img2</th>-->
-<!--                <td>JeongO</td>-->
-<!--                <td>오늘도 성공</td>-->
-<!--            </tr>-->
-            </tbody>
-        </table>
+<p></p>
+
+
+<div class="detailbox" id="detail-box">
+    <!--        <div class="para">-->
+    <!--&lt;!&ndash;            <img src="">&ndash;&gt;-->
+    <!--            <div class="vertical">-->
+    <!--                <p>{챌린지명}</p>-->
+    <!--                <p>기간 : {startdate} ~ {enddate}까지</p>-->
+    <!--                <p>참가 인원 : {participants} 명</p>-->
+    <!--                <button onclick="open_box()" type="button" class="btn btn-danger">참가하기</button>-->
+    <!--            </div>-->
+    <!--        </div>-->
+    <!--        <div class="description">-->
+    <!--            <p>챌린지 설명</p>-->
+    <!--            <p>{챌린지 소개하는 짧은 설명}</p>-->
+    <!--        </div>-->
+</div>
+
+<div class="certibox" id="cer_box">
+    <p>챌린지 성공 인증하기</p>
+    <div class="input-group mb-3">
+        <input type="text" class="form-control" id="comment" placeholder="인증 메세지를 작성하세요"
+               aria-label="Recipient's username"
+               aria-describedby="button-addon2">
+        <button onclick="save_certi()" class="btn btn-outline-secondary" type="button" id="button-addon2">인증</button>
     </div>
+</div>
+
+<div class="certilist">
+    <p>인증 기록</p>
+    <table class="table" id="certitable">
+        <!--            <thead>-->
+        <!--            <tr>-->
+        <!--                <th scope="col">img</th>-->
+        <!--                <th scope="col">닉네임</th>-->
+        <!--                <th scope="col">인증메세지</th>-->
+        <!--            </tr>-->
+        <!--            </thead>-->
+        <tbody>
+        <!--            <tr>-->
+        <!--                <th scope="row">img1</th>-->
+        <!--                <td>JIN</td>-->
+        <!--                <td>인증했다!!!</td>-->
+        <!--            </tr>-->
+        <!--            <tr>-->
+        <!--                <th scope="row">img2</th>-->
+        <!--                <td>JeongO</td>-->
+        <!--                <td>오늘도 성공</td>-->
+        <!--            </tr>-->
+        </tbody>
+    </table>
+</div>
 </body>
 </html>
