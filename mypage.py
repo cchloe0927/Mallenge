@@ -10,7 +10,7 @@ def home():
 
 
 # 내가 만든 챌린지 불러오기
-@mypage.route('/listing', methods=["GET"])
+@mypage.route('/madechall', methods=["GET"])
 def listing():
    challenge_list = list(db.challenge.find({}, {'_id': False}))
    certification_list = list(db.certification.find({}, {'_id': False}))
