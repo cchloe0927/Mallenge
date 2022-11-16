@@ -41,6 +41,7 @@ def posting():
       "chall_id": int(chall_id),
    }
 
+
    db.challenge.insert_one(doc)
    return jsonify({'msg': '포스팅 성공!'})
 
