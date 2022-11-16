@@ -44,13 +44,8 @@ ___
 
 <br />
 
-## 🗂 DB 설계
-
-<img width="600" alt="스크린샷 2022-11-15 오후 5 56 00" src="https://user-images.githubusercontent.com/96729804/201874915-c8d51788-a553-4336-8bdd-b4950ec8ac11.png">
-
-<br />
-
 ## 🧮 API 설계
 
-<img width="871" alt="스크린샷 2022-11-15 오후 5 52 16" src="https://user-images.githubusercontent.com/96729804/201875118-a72dbea4-ade6-42dd-915f-ab355a96d0ba.png">
-<img width="861" alt="스크린샷 2022-11-15 오후 5 52 25" src="https://user-images.githubusercontent.com/96729804/201875129-5b76bcc1-2c36-4bc4-82eb-7d6d64bf5507.png">
+<img width="779" alt="스크린샷 2022-11-16 오후 8 56 59" src="https://user-images.githubusercontent.com/96729804/202174896-c2e7a965-d39e-4e28-bf52-71566ddb8b07.png">
+<img width="791" alt="스크린샷 2022-11-16 오후 8 57 37" src="https://user-images.githubusercontent.com/96729804/202174921-08b51fff-2766-4f9b-af37-6d1d7af589ac.png">
+
