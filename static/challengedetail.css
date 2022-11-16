@@ -44,6 +44,13 @@
 
             margin : 20px auto 0px auto;
         }
+
+        .sizecontrol{
+
+            max-height : 200px;
+        }
+
+
         .para{
 
 

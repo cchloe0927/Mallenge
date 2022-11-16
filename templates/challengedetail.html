@@ -15,22 +15,23 @@
 
 
     <link rel="stylesheet" href="../static/challengedetail.css">
+    <link rel="stylesheet" href="../static/global.css">
 
     <script src="../static/challengedetail.js"></script>
+    <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
 
 </head>
 <body>
 
-<div class="topbar">
-    <a href="#"><img src="static/image/logo_en.png" class="logo" onclick="reload()"></a>
-    <div class="bar-btn">
-        <h5> 유저아이디 </h5>
-        <button type="button" class="btn btn-primary" onclick="window.location.href = '/index2'">마이페이지</button>
-        <button type="button" class="btn btn-dark" onclick="window.location.href = '/index3'">로그아웃</button>
-    </div>
-</div>
-
-<p></p>
+<!—banner—>
+<nav class="menubar">
+    <a href="/"><img src="../static/logo_en.png" class="menuLogo"></a>
+    <ul class="menuItem">
+        <li><b>{{nickname}}</b>님</li>
+        <button type="button" class="btn btn-outline-dark" onclick="location.href='/mypage'"><i class="fas fa-user"></i></i></button>
+        <button type="button" class="btn btn-outline-dark" onclick="logout()">로그아웃</button>
+    </ul>
+</nav>
 
 
 <div class="detailbox" id="detail-box">

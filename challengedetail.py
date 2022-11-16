@@ -8,9 +8,9 @@ SECRET_KEY = 'SPARTA'
 # from bson.json_util import dumps
 
 
-@challengedetail.route('/')
-def home():
-    return render_template('challengedetail.html')
+# @challengedetail.route('/')
+# def home():
+#     return render_template('challengedetail.html')
 
 
 # //선택된 챌린지 상세 보여주기
@@ -56,9 +56,6 @@ def partici_post():
 # //인증 댓글 저장
 @challengedetail.route("/certification", methods=["POST"])
 def certi_post():
-    cer_id_list = list(db.certification.find({}, {'_id': False}))
-    cer_id_made = len(cer_id_list) + 1
-
 
     token_receive = request.cookies.get('mytoken')
     payload = jwt.decode(token_receive, SECRET_KEY, algorithms=['HS256'])
@@ -67,11 +64,14 @@ def certi_post():
     user_id_receive = payload['id']
     user_nickname = user_info['nick']
 
-
     # cer_id_receive = request.form['cer_id_give']
     comment_receive = request.form['comment_give']
     # user_id_receive = request.form['user_id_give']
-    chall_id_receive = request.form['chall_id_give']
+    chall_id_receive = request.form['challenge_give']
+
+    cer_id_list = list(db.certification.find({'chall_id': int(chall_id_receive)}, {'_id': False}))
+    cer_id_made = len(cer_id_list) + 1
+
     date_receive = request.form['date_give']
     count = 0
     certi_count = db.my_challenge.find({
