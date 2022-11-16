@@ -39,6 +39,7 @@ def posting():
       "end_date": end_date,
       "content": content,
       "chall_id": int(chall_id),
+      "participants": 0,
    }
 
    db.challenge.insert_one(doc)

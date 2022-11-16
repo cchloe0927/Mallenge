@@ -22,7 +22,6 @@ function posting() {
     form_data.append("start_date_give", start_date)
     form_data.append("end_date_give", end_date)
     form_data.append("content_give", content)
-
     console.log(title, challenge_img, start_date, end_date, content, form_data)
 
     $.ajax({
@@ -48,12 +47,8 @@ function listing() {
         success: function (response) {
             let challenge_rows = response['challenge_list']
             //console.log("challenge:", challenge_rows)
-            let challenge_chall_id = challenge_rows.map((item)=>item.chall_id)
-            //console.log("challenge_chall_id", challenge_chall_id)
             let my_challenge_rows = response['my_challenge_list'] //my_challenge에서 데이터 가져옴
-            // let participants = my_challenge_rows.filter((item)=>item.chall_id == chall_id);
             //console.log("my-challenge:", my_challenge_rows)
-
 
             for (let i = 0; i < challenge_rows.length; i++) {
                 let chall_id = challenge_rows[i]['chall_id']
@@ -64,6 +59,7 @@ function listing() {
                 let content = challenge_rows[i]['content']
                 //console.log(typeof chall_id, challenge_img, title, start_date, end_date, content)
 
+                //my_challenged에서 chall_id데이터 추출
                 let participants = 0;
                 for (let j=0 ; j<my_challenge_rows.length; j++) {
                     let data = my_challenge_rows[j]
@@ -73,10 +69,6 @@ function listing() {
                     }
                 }
                 console.log("chall_id :", chall_id, "participants :", participants)
-
-
-
-
 
                 let final_date = Number(end_date.split('-').join(''))
                 //console.log(final_date)
