@@ -79,7 +79,7 @@
                             $.cookie('mytoken', response['token']);
 
                             alert('로그인 완료!')
-                            window.location.href = '/main'
+                            window.location.href = '/'
                         } else {
                             // 로그인이 안되면 에러메시지를 띄웁니다.
                             alert(response['msg'])
@@ -90,6 +90,9 @@
     </script>
 </head>
 <body>
+    <div class="logo1">
+        <img src="/image/logo_en.png" alt="">
+    </div>
     <div class="my-box">
     </div>
     <div class="l_text_back">
