@@ -17,7 +17,7 @@ function open_box(){
 
         $.ajax({
             type: 'POST',
-            url: '/my_challenge',
+            url: '/challengedetail/my_challenge',
             data: {'chall_id_give': 10, 'user_id_give':100},
             success: function (response) {
                 alert(response['msg'])
@@ -38,11 +38,11 @@ function display() {
 
     $.ajax({
         type: 'GET',
-        url: '/challenge',
+        url: '/challengedetail/challenge',
         data: {},
         success: function (response) {
 
-            // console.log(response['one_challenge'])
+            console.log(response['one_challenge'])
 
             let one_title = response['one_challenge']['title']
             let one_image = response['one_challenge']['challenge_img']
@@ -79,7 +79,7 @@ function display() {
 function show_certi() {
         $.ajax({
             type: "GET",
-            url: "/certification",
+            url: "/challengedetail/certification",
             data: {},
             success: function (response) {
 
@@ -117,7 +117,7 @@ function save_certi() {
 
         $.ajax({
             type: 'POST',
-            url: '/certification',
+            url: '/challengedetail/certification',
             data: {
                     // 'cer_id_give' : cer_id,
                     'comment_give': comment,
