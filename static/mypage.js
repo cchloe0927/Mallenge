@@ -14,21 +14,27 @@ function listing() {
         url: "/mypage/madechall",
         data: {},
         success: function (response) {
-            console.log(response)
+            //console.log(response)
             let challenge_rows = response['challenge_list']
             let certification_list = response['certification_list']
-            let loginuser_id = "다혜"
+            let loginuser_id = response['user_id']
+
+            challenge_rows = JSON.stringify(challenge_rows);
+
+            const new_challenge_rows = JSON.parse(challenge_rows).filter(function (element) {
+                return element.user_id == loginuser_id;
+            });
+            //console.log("newObj");
+            console.log(new_challenge_rows);
 
             //챌린지값 뽑아냄
-            for (let i = 0; i < challenge_rows.length; i++) {
-                let chall_id = challenge_rows[i]['chall_id']
-                let challenge_img = challenge_rows[i]['challenge_img']
-                let title = challenge_rows[i]['title']
+            for (let i = 0; i < new_challenge_rows.length; i++) {
+                let chall_id = new_challenge_rows[i]['chall_id']
+                let challenge_img = new_challenge_rows[i]['challenge_img']
+                let title = new_challenge_rows[i]['title']
                 //let participants = 10 //certification에서 데이터 가져와야함
-                let start_date = challenge_rows[i]['start_date']
-                let end_date = challenge_rows[i]['end_date']
-                //let user_id = challenge_rows[i]['user_id']
-                console.log(chall_id, challenge_img, title, start_date, end_date)
+                let start_date = new_challenge_rows[i]['start_date']
+                let end_date = new_challenge_rows[i]['end_date']
 
                 let final_date = Number(end_date.split('-').join(''))
                 //console.log(final_date)
