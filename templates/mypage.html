@@ -12,28 +12,11 @@
             crossorigin="anonymous"></script>
 
     <title>Mallenge-mypage</title>
-    <script>
-        $(document).ready(function () {
-            mypageload();
-        });
-
-        function mypageload() {
-            $.ajax({
-                type: "GET",
-                url: "/test?title_give=봄날은간다",
-                data: {},
-                success: function (response) {
-                    console.log(response)
-                }
-            })
-        }
-    </script>
-
 
     <link rel="stylesheet" href="../static/mypage.css">
     <link rel="stylesheet" href="../static/global.css">
 
-    <script src="../static/main.js"></script>
+    <script src="../static/mypage.js"></script>
 </head>
 <body>
 <nav class="menubar">
@@ -106,56 +89,6 @@
                 </div>
             </div>
         </div>
-        <div class="col">
-            <div class="card h-100">
-                <img src="{{ url_for('static', filename='image/coding.png') }}"> <!--flask img 불러오기-->
-                <div class="card-body">
-                    <h5 class="card-title">밤샘코딩 <small class="participants">10명 참여중</small></h5>
-                    <h6 class="card-text period">기간 <span>202.11.14일-2022.11.18</span></h6>
-                    <p class="card-text">밤샘코딩으로 미니프로젝트를 완성해 보아요~</p>
-                </div>
-            </div>
-        </div>
-        <div class="col">
-            <div class="card h-100">
-                <img src="{{ url_for('static', filename='image/coding.png') }}"> <!--flask img 불러오기-->
-                <div class="card-body">
-                    <h5 class="card-title">밤샘코딩 <small class="participants">10명 참여중</small></h5>
-                    <h6 class="card-text period">기간 <span>202.11.14일-2022.11.18</span></h6>
-                    <p class="card-text">밤샘코딩으로 미니프로젝트를 완성해 보아요~</p>
-                </div>
-            </div>
-        </div>
-        <div class="col">
-            <div class="card h-100">
-                <img src="{{ url_for('static', filename='image/coding.png') }}"> <!--flask img 불러오기-->
-                <div class="card-body">
-                    <h5 class="card-title">밤샘코딩 <small class="participants">10명 참여중</small></h5>
-                    <h6 class="card-text period">기간 <span>202.11.14일-2022.11.18</span></h6>
-                    <p class="card-text">밤샘코딩으로 미니프로젝트를 완성해 보아요~</p>
-                </div>
-            </div>
-        </div>
-        <div class="col">
-            <div class="card h-100">
-                <img src="{{ url_for('static', filename='image/coding.png') }}"> <!--flask img 불러오기-->
-                <div class="card-body">
-                    <h5 class="card-title">밤샘코딩 <small class="participants">10명 참여중</small></h5>
-                    <h6 class="card-text period">기간 <span>202.11.14일-2022.11.18</span></h6>
-                    <p class="card-text">밤샘코딩으로 미니프로젝트를 완성해 보아요~</p>
-                </div>
-            </div>
-        </div>
-        <div class="col">
-            <div class="card h-100">
-                <img src="{{ url_for('static', filename='image/coding.png') }}"> <!--flask img 불러오기-->
-                <div class="card-body">
-                    <h5 class="card-title">밤샘코딩 <small class="participants">10명 참여중</small></h5>
-                    <h6 class="card-text period">기간 <span>202.11.14일-2022.11.18</span></h6>
-                    <p class="card-text">밤샘코딩으로 미니프로젝트를 완성해 보아요~</p>
-                </div>
-            </div>
-        </div>
     </div>
 </div>
 
@@ -164,110 +97,7 @@
 </section>
 <!--challenge List-->
 <div class="wrap">
-    <div class="row row-cols-md-5 g-4">
-        <div class="col">
-            <div class="card h-100">
-                <img src="{{ url_for('static', filename='image/coding.png') }}"> <!--flask img 불러오기-->
-                <div class="card-body">
-                    <h5 class="card-title">밤샘 코딩<small class="participants">10명 참여중</small></h5>
-                    <h6 class="card-text period">기간 <span>2022.11.14일-2022.11.18</span></h6>
-                    <progress value="20" max="100"></progress>
-                    <p class="card-text">20% 달성</p>
-                </div>
-            </div>
-        </div>
-        <div class="col">
-            <div class="card h-100">
-                <img src="{{ url_for('static', filename='image/coding.png') }}" class="sucessimg"> <!--flask img 불러오기-->
-                <img src="static/image/sucess.png" class="sucess">
-                <div class="card-body">
-                    <h5 class="card-title">밤샘코딩 <small class="participants">10명 참여중</small></h5>
-                    <h6 class="card-text period">기간 <span>202.11.14일-2022.11.18</span></h6>
-                    <p class="card-text">밤샘코딩으로 미니프로젝트를 완성해 보아요~</p>
-                </div>
-            </div>
-        </div>
-        <div class="col">
-            <div class="card h-100">
-                <img src="{{ url_for('static', filename='image/coding.png') }}"> <!--flask img 불러오기-->
-                <div class="card-body">
-                    <h5 class="card-title">밤샘코딩 <small class="participants">10명 참여중</small></h5>
-                    <h6 class="card-text period">기간 <span>202.11.14일-2022.11.18</span></h6>
-                    <p class="card-text">밤샘코딩으로 미니프로젝트를 완성해 보아요~</p>
-                </div>
-            </div>
-        </div>
-        <div class="col">
-            <div class="card h-100">
-                <img src="{{ url_for('static', filename='image/coding.png') }}"> <!--flask img 불러오기-->
-                <div class="card-body">
-                    <h5 class="card-title">밤샘코딩 <small class="participants">10명 참여중</small></h5>
-                    <h6 class="card-text period">기간 <span>202.11.14일-2022.11.18</span></h6>
-                    <p class="card-text">밤샘코딩으로 미니프로젝트를 완성해 보아요~</p>
-                </div>
-            </div>
-        </div>
-        <div class="col">
-            <div class="card h-100">
-                <img src="{{ url_for('static', filename='image/coding.png') }}"> <!--flask img 불러오기-->
-                <div class="card-body">
-                    <h5 class="card-title">밤샘코딩 <small class="participants">10명 참여중</small></h5>
-                    <h6 class="card-text period">기간 <span>202.11.14일-2022.11.18</span></h6>
-                    <p class="card-text">밤샘코딩으로 미니프로젝트를 완성해 보아요~</p>
-                </div>
-            </div>
-        </div>
-        <div class="col">
-            <div class="card h-100">
-                <img src="{{ url_for('static', filename='image/coding.png') }}"> <!--flask img 불러오기-->
-                <div class="card-body">
-                    <h5 class="card-title">밤샘코딩 <small class="participants">10명 참여중</small></h5>
-                    <h6 class="card-text period">기간 <span>202.11.14일-2022.11.18</span></h6>
-                    <p class="card-text">밤샘코딩으로 미니프로젝트를 완성해 보아요~</p>
-                </div>
-            </div>
-        </div>
-        <div class="col">
-            <div class="card h-100">
-                <img src="{{ url_for('static', filename='image/coding.png') }}"> <!--flask img 불러오기-->
-                <div class="card-body">
-                    <h5 class="card-title">밤샘코딩 <small class="participants">10명 참여중</small></h5>
-                    <h6 class="card-text period">기간 <span>202.11.14일-2022.11.18</span></h6>
-                    <p class="card-text">밤샘코딩으로 미니프로젝트를 완성해 보아요~</p>
-                </div>
-            </div>
-        </div>
-        <div class="col">
-            <div class="card h-100">
-                <img src="{{ url_for('static', filename='image/coding.png') }}"> <!--flask img 불러오기-->
-                <div class="card-body">
-                    <h5 class="card-title">밤샘코딩 <small class="participants">10명 참여중</small></h5>
-                    <h6 class="card-text period">기간 <span>202.11.14일-2022.11.18</span></h6>
-                    <p class="card-text">밤샘코딩으로 미니프로젝트를 완성해 보아요~</p>
-                </div>
-            </div>
-        </div>
-        <div class="col">
-            <div class="card h-100">
-                <img src="{{ url_for('static', filename='image/coding.png') }}"> <!--flask img 불러오기-->
-                <div class="card-body">
-                    <h5 class="card-title">밤샘코딩 <small class="participants">10명 참여중</small></h5>
-                    <h6 class="card-text period">기간 <span>202.11.14일-2022.11.18</span></h6>
-                    <p class="card-text">밤샘코딩으로 미니프로젝트를 완성해 보아요~</p>
-                </div>
-            </div>
-        </div>
-        <div class="col">
-            <div class="card h-100">
-                <img src="{{ url_for('static', filename='image/coding.png') }}"> <!--flask img 불러오기-->
-                <div class="card-body">
-                    <h5 class="card-title">밤샘코딩 <small class="participants">10명 참여중</small></h5>
-                    <h6 class="card-text period">기간 <span>202.11.14일-2022.11.18</span></h6>
-                    <p class="card-text">밤샘코딩으로 미니프로젝트를 완성해 보아요~</p>
-                </div>
-            </div>
-        </div>
-    </div>
+    <div id="challenge-list" class="row row-cols-md-5 g-4"></div>
 </div>
 
 </body>
