@@ -41,7 +41,37 @@ progress {
     padding: 30px;
 }
 
+.card-box {
+    position: relative;
+}
+.card-box:hover {
+    cursor:pointer;
+    transform: scale(1.1);
+}
+
+.disabled {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -60%);
+    z-index: 1;
+    font-size: 20px;
+    font-weight: bold;
+    color:#323232;
+}
+
+.challenge_img {
+    height: 200px;
+}
+
+.card-title {
+    font-size: 18px;
+    font-weight: bold;
+}
+
 .participants {
+    font-size: 16px;
+    font-weight: bold;
     float: right;
     color: #F70511;
 }
