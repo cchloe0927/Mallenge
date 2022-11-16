@@ -4,7 +4,7 @@ from mypage import mypage
 from challengedetail import challengedetail
 from flask import Flask, render_template, jsonify, request, session, redirect, url_for
 from db import db
-from config import DBURL
+
 app = Flask(__name__)
 
 # JWT 토큰을 만들 때 필요한 비밀문자열입니다. 아무거나 입력해도 괜찮습니다.
@@ -33,7 +33,7 @@ def main():
     token_receive = request.cookies.get('mytoken')
     try:
         payload = jwt.decode(token_receive, SECRET_KEY, algorithms=['HS256'])
-        user_info = db.user.find_one({"id": payload['id']})
+        user_info = db.user.find_one({"user_id": payload['id']})
         return render_template('main.html', nickname=user_info["nick"])
     except jwt.ExpiredSignatureError:
         return redirect(url_for("login", msg="로그인 시간이 만료되었습니다."))
@@ -45,7 +45,7 @@ def mypage():
     token_receive = request.cookies.get('mytoken')
     try:
         payload = jwt.decode(token_receive, SECRET_KEY, algorithms=['HS256'])
-        user_info = db.user.find_one({"id": payload['id']})
+        user_info = db.user.find_one({"user_id": payload['id']})
         return render_template('mypage.html', nickname=user_info["nick"])
     except jwt.ExpiredSignatureError:
         return redirect(url_for("login", msg="로그인 시간이 만료되었습니다."))
@@ -53,11 +53,11 @@ def mypage():
         return redirect(url_for("login", msg="로그인 정보가 존재하지 않습니다."))
 
 @app.route('/challengedetail/')
-def challengedatail():
+def challengedetail():
     token_receive = request.cookies.get('mytoken')
     try:
         payload = jwt.decode(token_receive, SECRET_KEY, algorithms=['HS256'])
-        user_info = db.user.find_one({"id": payload['id']})
+        user_info = db.user.find_one({"user_id": payload['id']})
         return render_template('challengedetail.html', nickname=user_info["nick"])
     except jwt.ExpiredSignatureError:
         return redirect(url_for("login", msg="로그인 시간이 만료되었습니다."))
@@ -90,7 +90,7 @@ def api_register():
 
     pw_hash = hashlib.sha256(pw_receive.encode('utf-8')).hexdigest()
 
-    db.user.insert_one({'id': id_receive, 'pw': pw_hash, 'nick': nickname_receive})
+    db.user.insert_one({'user_id': id_receive, 'password': pw_hash, 'nick': nickname_receive})
 
     return jsonify({'result': 'success'})
 
@@ -108,7 +108,7 @@ def api_login():
     pw_hash = hashlib.sha256(pw_receive.encode('utf-8')).hexdigest()
 
     # id, 암호화된pw을 가지고 해당 유저를 찾습니다.
-    result = db.user.find_one({'id': id_receive, 'pw': pw_hash})
+    result = db.user.find_one({'user_id': id_receive, 'password': pw_hash})
     print(result)
 
     # 찾으면 JWT 토큰을 만들어 발급합니다.
@@ -151,7 +151,7 @@ def api_valid():
 
         # payload 안에 id가 들어있습니다. 이 id로 유저정보를 찾습니다.
         # 여기에선 그 예로 닉네임을 보내주겠습니다.
-        userinfo = db.user.find_one({'id': payload['id']}, {'_id': 0})
+        userinfo = db.user.find_one({'user_id': payload['id']}, {'_id': 0})
         return jsonify({'result': 'success', 'nickname': userinfo['nick']})
     except jwt.ExpiredSignatureError:
         # 위를 실행했는데 만료시간이 지났으면 에러가 납니다.
@@ -161,4 +161,4 @@ def api_valid():
 
 
 if __name__ == '__main__':
-    app.run('0.0.0.0', port=5000, debug=True)
+    app.run('0.0.0.0', port=5001, debug=True)

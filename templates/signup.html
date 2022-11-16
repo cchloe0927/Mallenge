@@ -7,15 +7,27 @@
     <title>Title</title>
 
   <style>
+
+   @font-face {
+        font-family: 'Pretendard-Regular';
+        src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+        font-weight: 400;
+        font-style: normal;
+    }
+    * {
+        font-family: 'Pretendard-Regular';
+    }
+
     .my-box{
         border : 1px solid;
         padding : 60px;
         background-color: #f5f5f5;
         width: 400px;
         height: 387px;
-        margin-top: 164px;
+        margin-top: -28px;
         margin-left: 145px;
         border-radius: 80px;
+        box-shadow: 5px 5px 5px 5px grey;
     }
      .circle {
         margin: 0 auto;
@@ -46,50 +58,99 @@
         margin-left: 228px;
     }
     .signup_btn_back {
-        margin-top: 39px;
+        margin-top: 18px;
         margin-left: 329px;
+        color: white;
     }
     .l_text_back {
         margin-top: -503px;
         margin-left: 380px;
-    }
-    .login_btn {
-        width: 148px;
-        height: 50px;
-        border-radius: 20px;
     }
     .signup_btn {
         width: 148px;
         height: 50px;
         border-radius: 20px;
         background-color: #F70511;
+        color: white;
+        font-size : 18px;
+    }
+    .logo1 {
+        margin-top: 63px;
+        margin-left: 178px;
+    }
+    #pic1 {
+        width: 450px;
+        /* height: 100px; */
     }
   </style>
     <script>
         // 간단한 회원가입 함수입니다.
             // 아이디, 비밀번호, 닉네임을 받아 DB에 저장합니다.
             function register() {
-                $.ajax({
-                    type: "POST",
-                    url: "/api/register",
-                    data: {
-                        id_give: $('#id').val(),
-                        pw_give: $('#pwd').val(),
-                        nickname_give: $('#nick').val()
-                    },
-                    success: function (response) {
-                        if (response['result'] == 'success') {
-                            alert('회원가입이 완료되었습니다.')
-                            window.location.href = '/login'
-                        } else {
-                            alert(response['msg'])
+                if( $('#id').val() != '' && $('#nick').val() != '' && $('#pwd').val() != '' && $('#pcheck').val() != ''){
+
+                if(p_count == 1){
+                    alert("회원가입 성공")
+                        $.ajax({
+                        type: "POST",
+                        url: "/api/register",
+                        data: {
+                            id_give: $('#id').val(),
+                            pw_give: $('#pwd').val(),
+                            nickname_give: $('#nick').val()
+                        },
+                        success: function (response) {
+                            if (response['result'] == 'success') {
+                                alert('회원가입이 완료되었습니다.')
+                                window.location.href = '/login'
+                            } else {
+                                alert(response['msg'])
+                            }
                         }
+                    })
                     }
-                })
+                    else{
+                        alert("비밀번호가 일치하지 않습니다!")
+                        $('#id').val('')
+                        $('#nick').val('')
+                        $('#pwd').val('')
+                        $('#pcheck').val('')
+                    }
+                }
+                else{
+                    alert("회원가입 정보를 모두 입력해주세요.")
+                    $('#id').val('')
+                    $('#nick').val('')
+                    $('#pwd').val('')
+                    $('#pcheck').val('')
+                }
+
+            }
+
+let p_count = 0;
+            function check_pw(){
+                let p1 = $('#pwd').val()
+                let p2 = $('#pcheck').val()
+
+                if(p1 == p2){
+                    $("#check *").remove();
+                    $("#check").append("<p style='color:blue;'>비밀번호 일치</p>")
+                    p_count = 1
+                    console.log(p_count)
+                }
+                else{
+                    $('#check *').remove();
+                    $('#check').append("<p style='color:red;'>비밀번호 불일치</p>")
+                    p_count = 0
+                    console.log(p_count)
+                }
             }
     </script>
 </head>
 <body>
+    <div class="logo1">
+        <img src="../static/image/logo_en.png" alt="" id="pic1">
+    </div>
     <div class="logo1">
         <img src="/image/logo_en.png" alt="">
     </div>
@@ -99,7 +160,7 @@
     <div class="l_text_back">
         <h3>signup</h3>
     </div>
-    <div class="name_   id">
+    <div class="name_id">
 
     </div>
     <div class="id_back">
@@ -109,10 +170,10 @@
         <input id="nick" placeholder="닉네임" type="text" style="width: 380px; height: 44px;">
     </div>
     <div class="pwd_back">
-        <input id="pwd" placeholder="비밀번호" type="password" style="width: 380px; height: 44px;">
+        <input id="pwd" onchange="check_pw()" placeholder="비밀번호" type="password" style="width: 380px; height: 44px;">
     </div>
     <div class="pcheck_back">
-        <input id="pcheck" placeholder="비밀번호 확인" type="text" style="width: 380px; height: 44px;">
+        <input id="pcheck" onchange="check_pw()" placeholder="비밀번호 확인" type="password" style="width: 380px; height: 44px;"> <span id="check"><p style="color:red;">비밀번호 불일치</p></span>
     </div>
 
     <div class="signup_btn_back">
