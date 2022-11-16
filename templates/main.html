@@ -32,10 +32,13 @@
         alert('로그아웃!')
         window.location.href='/login'
       }
+      $('.userid').attr('id') != ""
     </script>
 </head>
 
 <body>
+<!--유저 아이디 토큰에서 가져오는 법-->
+<div id="{{nickname}}" class="userid"></div>
 <!--banner-->
 <nav class="menubar">
     <a href="/"><img src="../static/logo_en.png" class="menuLogo"></a>
@@ -44,7 +47,6 @@
         <button type="button" class="btn btn-outline-dark" onclick="logout()">로그아웃</button>
     </ul>
 </nav>
-
 <!--upload / modal -->
 <button class="upload-btn" onclick='$("#modal-post").addClass("is-active")'><span class="add">+</span></button>
 <div class="modal" id="modal-post">
