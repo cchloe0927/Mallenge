@@ -12,6 +12,11 @@
             integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
             crossorigin="anonymous"></script>
 
+    <!--쿠키 사용을 위해 넣어주세요!-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"
+    integrity="sha512-3j3VU6WC5rPQB4Ld1jnLV7Kd5xr+cq9avvhwqzbH/taCRNURoeEpoPBK9pDyeukwSxwRPJ8fDgvYXd6SkaZ2TA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
     <!-- Bulma CSS /Modal -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
 
@@ -21,17 +26,24 @@
     <link rel="stylesheet" href="../static/global.css">
     <link rel="stylesheet" href="../static/main.css">
     <script src="../static/main.js"></script>
+    <script>
+        function logout(){
+        $.removeCookie('mytoken');
+        alert('로그아웃!')
+        window.location.href='/login'
+      }
+    </script>
 </head>
 
 <body>
 <!--banner-->
 <nav class="menubar">
-        <a href="/"><img src="../static/logo_en.png" class="menuLogo"></a>
-        <ul class="menuItem">
-            <li><b>닉네임</b>님</li>
-            <button type="button" class="btn btn-outline-dark">로그아웃</button>
-        </ul>
-    </nav>
+    <a href="/"><img src="../static/logo_en.png" class="menuLogo"></a>
+    <ul class="menuItem">
+        <li><b>닉네임</b>님</li>
+        <button type="button" class="btn btn-outline-dark" onclick="logout()">로그아웃</button>
+    </ul>
+</nav>
 
 <!--upload / modal -->
 <button class="upload-btn" onclick='$("#modal-post").addClass("is-active")'><span class="add">+</span></button>

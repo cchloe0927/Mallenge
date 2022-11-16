@@ -65,7 +65,7 @@ function display() {
                                             <div class="vertical">
                                                 <p>${one_title}</p>
                                                 <p>기간 : ${one_s_date} ~ ${one_e_date}</p>
-                                                <p>참가 인원 : ${one_participants} 명</p>
+        1                                        <p>참가 인원 : ${one_participants} 명</p>
                                                 <button onclick="open_box()" type="button" class="btn btn-danger">참가하기</button>
                                             </div>
                                         </div>

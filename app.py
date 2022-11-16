@@ -1,13 +1,10 @@
-
+from flask import Flask
+from main import main
+from mypage import mypage
+from challengedetail import challengedetail
 from flask import Flask, render_template, jsonify, request, session, redirect, url_for
-
+from db import db
 app = Flask(__name__)
-
-from pymongo import MongoClient
-import certifi
-ca = certifi.where()
-client = MongoClient('mongodb+srv://Mallenge:Mallenge@cluster0.jm38if6.mongodb.net/?retryWrites=true&w=majority', tlsCAFile=ca)
-db = client.Mallenge
 
 # JWT 토큰을 만들 때 필요한 비밀문자열입니다. 아무거나 입력해도 괜찮습니다.
 # 이 문자열은 서버만 알고있기 때문에, 내 서버에서만 토큰을 인코딩(=만들기)/디코딩(=풀기) 할 수 있습니다.
@@ -23,6 +20,9 @@ import datetime
 # 그렇지 않으면, 개발자(=나)가 회원들의 비밀번호를 볼 수 있으니까요.^^;
 import hashlib
 
+app.register_blueprint(main)
+app.register_blueprint(mypage)
+app.register_blueprint(challengedetail)
 
 #################################
 ##  HTML을 주는 부분             ##
@@ -46,6 +46,18 @@ def mypage():
         payload = jwt.decode(token_receive, SECRET_KEY, algorithms=['HS256'])
         user_info = db.user.find_one({"id": payload['id']})
         return render_template('mypage.html', nickname=user_info["nick"])
+    except jwt.ExpiredSignatureError:
+        return redirect(url_for("login", msg="로그인 시간이 만료되었습니다."))
+    except jwt.exceptions.DecodeError:
+        return redirect(url_for("login", msg="로그인 정보가 존재하지 않습니다."))
+
+@app.route('/challengedetail/')
+def challengedatail():
+    token_receive = request.cookies.get('mytoken')
+    try:
+        payload = jwt.decode(token_receive, SECRET_KEY, algorithms=['HS256'])
+        user_info = db.user.find_one({"id": payload['id']})
+        return render_template('challengedetail.html', nickname=user_info["nick"])
     except jwt.ExpiredSignatureError:
         return redirect(url_for("login", msg="로그인 시간이 만료되었습니다."))
     except jwt.exceptions.DecodeError:
@@ -148,4 +160,4 @@ def api_valid():
 
 
 if __name__ == '__main__':
-    app.run('0.0.0.0', port=5001, debug=True)
+    app.run('0.0.0.0', port=5000, debug=True)
