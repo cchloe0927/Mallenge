@@ -23,6 +23,11 @@ $(document).ready(function(){
 //         };
 // })
 
+function logout() {
+        $.removeCookie('mytoken');
+        alert('로그아웃!')
+        window.location.href='/login'
+      }
 
 
 //참가하기 눌렀을 때
@@ -72,11 +77,11 @@ function display() {
             let temp_html = `
                                     
                                         <div class="para">
-                                            <img src="../static/challenge_img/${one_image}">
+                                            <img class="sizecontrol" src="../static/challenge_img/${one_image}">
                                             <div class="vertical">
                                                 <p>${one_title}</p>
                                                 <p>기간 : ${one_s_date} ~ ${one_e_date}</p>
-        1                                        <p>참가 인원 : ${one_participants} 명</p>
+                                                <p>참가 인원 : ${one_participants} 명</p>
                                                 <button onclick="open_box()" type="button" class="btn btn-danger">참가하기</button>
                                             </div>
                                         </div>
@@ -141,7 +146,7 @@ function save_certi() {
             data: {
                     'comment_give': comment,
                     // 'user_id_give' : user_id,
-                    'chall_id_give' : challenge_card_id,
+                    'challenge_give' : challenge_card_id,
                     'date_give' : date},
             success: function (response) {
                 alert(response['msg'])
