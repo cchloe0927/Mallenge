@@ -11,7 +11,7 @@ function disabledCard() {
 function listing() {
     $.ajax({
         type: "GET",
-        url: "/listing",
+        url: "/mypage/madechall",
         data: {},
         success: function (response) {
             console.log(response)
