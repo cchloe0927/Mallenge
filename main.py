@@ -13,7 +13,7 @@ def posting():
    try:
       # 로그인 되었을 때 실행할것들
       payload = jwt.decode(token_receive, SECRET_KEY, algorithms=['HS256'])
-      user_info = db.user.find_one({"user_id": payload['id']})
+      # user_info = db.user.find_one({"user_id": payload['id']})
 
       # challenge 카드에 고유 id 넣어주기
       challenge_list = list(db.challenge.find({}, {'_id': False}))
@@ -50,11 +50,11 @@ def posting():
          "user_id": user_id,
       }
       db.challenge.insert_one(doc)
-      return jsonify({'msg': '포스팅 성공!', 'user_nicname': user_info['nick']})
+      return jsonify({'msg': '포스팅 성공!'})
    except jwt.ExpiredSignatureError:
-      return jsonify({'result': 'fail', 'msg': '참가 완료!'})
+      return jsonify({'result': 'fail', 'msg': '로그인이 만료되었습니다.'})
    except jwt.exceptions.DecodeError:
-      return jsonify({'result': 'fail', 'msg': '참가 완료!'})
+      return jsonify({'result': 'fail', 'msg': '로그인이 실패했습니다.'})
 
 # challenge 카드 전체 리스트 불러오기
 @main.route('/listing', methods=["GET"])

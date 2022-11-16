@@ -4,9 +4,9 @@ from datetime import datetime
 from db import db
 mypage = Blueprint("mypage", __name__, url_prefix="/mypage")
 
-@mypage.route('/')
-def home():
-   return render_template('mypage.html')
+# @mypage.route('/')
+# def home():
+#    return render_template('mypage.html')
 
 
 # 내가 만든 챌린지 불러오기

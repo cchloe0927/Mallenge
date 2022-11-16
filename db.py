@@ -1,5 +1,6 @@
 from pymongo import MongoClient
+from config import DBURL
 import certifi
 ca = certifi.where()
-client = MongoClient('mongodb+srv://Mallenge:Mallenge@cluster0.jm38if6.mongodb.net/?retryWrites=true&w=majority', tlsCAFile=ca)
+client = MongoClient(DBURL, tlsCAFile=ca)
 db = client.Mallenge
