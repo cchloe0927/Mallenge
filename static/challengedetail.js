@@ -35,11 +35,15 @@ function open_box(){
 // }
 
 function display() {
+    const param = window.location.search;
+    const paramData = new URLSearchParams(param)
+    const challenge_card_id = paramData.get('challenge')
+    console.log(param, paramData, challenge_card_id)
 
     $.ajax({
         type: 'GET',
         url: '/challengedetail/challenge',
-        data: {},
+        data: {challenge : challenge_card_id},
         success: function (response) {
 
             console.log(response['one_challenge'])
