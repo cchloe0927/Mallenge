@@ -17,7 +17,10 @@
     * {
         font-family: 'Pretendard-Regular';
     }
-
+    .wrap {
+        width: 830px;
+        margin: auto;
+    }
     .my-box{
         border : 1px solid;
         padding : 60px;
@@ -148,36 +151,38 @@ let p_count = 0;
     </script>
 </head>
 <body>
-    <div class="logo1">
-        <img src="../static/image/logo_en.png" alt="" id="pic1">
-    </div>
-    <div class="logo1">
-        <img src="/image/logo_en.png" alt="">
-    </div>
-    <div class="my-box">
-    </div>
+    <div class="wrap">
+            <div class="logo1">
+                <img src="../static/image/logo_en.png" alt="" id="pic1">
+            </div>
+            <div class="logo1">
+                <img src="/image/logo_en.png" alt="">
+            </div>
+            <div class="my-box">
+            </div>
 
-    <div class="l_text_back">
-        <h3>signup</h3>
-    </div>
-    <div class="name_id">
+            <div class="l_text_back">
+                <h3>signup</h3>
+            </div>
+            <div class="name_id">
 
-    </div>
-    <div class="id_back">
-        <input id="id" placeholder="아이디" type="text" style="width: 380px; height: 44px;">
-    </div>
-    <div class="nick_back">
-        <input id="nick" placeholder="닉네임" type="text" style="width: 380px; height: 44px;">
-    </div>
-    <div class="pwd_back">
-        <input id="pwd" onchange="check_pw()" placeholder="비밀번호" type="password" style="width: 380px; height: 44px;">
-    </div>
-    <div class="pcheck_back">
-        <input id="pcheck" onchange="check_pw()" placeholder="비밀번호 확인" type="password" style="width: 380px; height: 44px;"> <span id="check"><p style="color:red;">비밀번호 불일치</p></span>
-    </div>
+            </div>
+            <div class="id_back">
+                <input id="id" placeholder="아이디" type="text" style="width: 380px; height: 44px;">
+            </div>
+            <div class="nick_back">
+                <input id="nick" placeholder="닉네임" type="text" style="width: 380px; height: 44px;">
+            </div>
+            <div class="pwd_back">
+                <input id="pwd" onchange="check_pw()" placeholder="비밀번호" type="password" style="width: 380px; height: 44px;">
+            </div>
+            <div class="pcheck_back">
+                <input id="pcheck" onchange="check_pw()" placeholder="비밀번호 확인" type="password" style="width: 380px; height: 44px;"> <span id="check"><p style="color:red;">비밀번호 불일치</p></span>
+            </div>
 
-    <div class="signup_btn_back">
-        <button class="signup_btn" onclick="register()">회원가입</button>
+            <div class="signup_btn_back">
+                <button class="signup_btn" onclick="register()">회원가입</button>
+            </div>
     </div>
 </body>
 </html>
