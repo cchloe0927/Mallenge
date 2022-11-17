@@ -60,5 +60,6 @@ def posting():
 @main.route('/listing', methods=["GET"])
 def listing():
    challenge_list = list(db.challenge.find({}, {'_id': False}))
+   challenge_list.reverse()
    my_challenge_list = list(db.my_challenge.find({}, {'_id': False}))
    return jsonify({'challenge_list': challenge_list, 'my_challenge_list': my_challenge_list})
