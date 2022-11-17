@@ -1,13 +1,18 @@
-<br />
 
-![logo_en](https://user-images.githubusercontent.com/96729804/201869527-747d3292-4264-49d1-8dcc-28c2a6f24972.png)
-___
 # 🚢 항해99 미니 프로젝트 - Mallenge
 + 챌린지를 생성 및 공유하고 참여 인증 할 수 있는 웹사이트
 
 <br />
+<br />
+
+![logo_en](https://user-images.githubusercontent.com/96729804/201869527-747d3292-4264-49d1-8dcc-28c2a6f24972.png)
+
+
+<br />
 
 ## 📺 실행화면
+https://user-images.githubusercontent.com/96729804/202395797-7644f1e6-9f6a-448c-8050-a462eba3f755.mp4
+
 
 
 <br />
