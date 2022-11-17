@@ -47,6 +47,8 @@ function open_box(){
 
 
 
+
+
 //
 // function close_box(){
 //     $('#cer_box').hide()
@@ -62,16 +64,21 @@ function display() {
         data: {challenge : challenge_card_id},
         success: function (response) {
 
-            console.log(response['one_challenge'])
+            console.log(response['one_challenge','one_participant'])
 
             let one_title = response['one_challenge']['title']
             let one_image = response['one_challenge']['challenge_img']
             let one_s_date = response['one_challenge']['start_date']
             let one_e_date = response['one_challenge']['end_date']
             let one_contents = response['one_challenge']['content']
-            let one_participants = response['one_challenge']['participants']
+            let one_participant = response['one_participant']
 
             // console.log(one_image, one_contents, one_title, one_e_date, one_s_date)
+
+
+
+
+
 
 
             let temp_html = `
@@ -81,7 +88,7 @@ function display() {
                                             <div class="vertical">
                                                 <p>${one_title}</p>
                                                 <p>기간 : ${one_s_date} ~ ${one_e_date}</p>
-                                                <p>참가 인원 : ${one_participants} 명</p>
+                                                <p>참가 인원 : ${one_participant} 명</p>
                                                 <button onclick="open_box()" type="button" class="btn btn-danger">참가하기</button>
                                             </div>
                                         </div>
@@ -113,11 +120,11 @@ function show_certi() {
 
                     let comment = rows[i]['comment']
                     let cer_id = rows[i]['cer_id']
-                    let user_id = rows[i]['user_id']
+                    let nickname = rows[i]['nick']
 
                     let temp_html = `<tr>
                                         <th scope="row">${cer_id}</th>
-                                        <td>${user_id}</td>
+                                        <td>${nickname}</td>
                                         <td>${comment}</td>
                                     </tr>
                                     `

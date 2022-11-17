@@ -20,8 +20,10 @@ def challenge_get():
     print(challenge_card_id)
     one_challenge = db.challenge.find_one({'chall_id': int(challenge_card_id)},{'_id' : False})
 
-
-    return jsonify({'one_challenge': one_challenge})
+    participant_list = list(db.my_challenge.find({'chall_id' : int(challenge_card_id)},{'_id' : False}))
+    one_participant = len(participant_list)
+    print(one_participant)
+    return jsonify({'one_challenge': one_challenge, 'one_participant': one_participant})
 
 
 # //참가하기 버튼 눌렀을 때
