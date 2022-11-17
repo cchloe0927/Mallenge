@@ -1,0 +1,99 @@
+/*upload / modal*/
+.upload-btn {
+    position: fixed;
+    bottom: 40px;
+    right: 40px;
+    width: 45px;
+    height: 45px;
+    font-size: 20px;
+    border: 1px solid #F70511;
+    background-color: #F70511;
+    border-radius: 50%;
+}
+
+.add {
+    position: fixed;
+    bottom: 25px;
+    right: 50px;
+    color: white;
+    text-align: center;
+    font-size: 40px;
+    font-weight: bold;
+    padding-bottom: 10px;
+}
+.add:hover {
+    transform: scale(1.2);
+}
+
+.title {
+    border: 1px solid #dbdbdb;
+    font-size: 20px;
+    font-weight: normal;
+    height: 35px;
+}
+
+.title:focus {
+    outline: none;
+}
+
+.period-input {
+    display: flex;
+    gap: 50px;
+}
+
+.contents:focus {
+    outline: none;
+}
+
+.posting-btn:hover {
+    border: 1px solid #F70511;
+}
+
+/*challenge*/
+.wrap {
+    margin: auto;
+    width: 1400px;
+    padding: 30px;
+}
+
+.card-box {
+    position: relative;
+}
+.card-box:hover {
+    cursor:pointer;
+    transform: scale(1.1);
+}
+
+.disabled {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -60%);
+    z-index: 1;
+    font-size: 20px;
+    font-weight: bold;
+    color:#323232;
+}
+
+.challenge_img {
+    height: 200px;
+}
+
+.card-title {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.participants {
+    font-size: 16px;
+    font-weight: bold;
+    float: right;
+    color: #F70511;
+}
+
+.period {
+    font-weight: bold;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+

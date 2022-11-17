@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- bootstrap CSS /Modal / -->
+    <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+            crossorigin="anonymous"></script>
+    <!--쿠키 사용을 위해 넣어주세요!-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"
+    integrity="sha512-3j3VU6WC5rPQB4Ld1jnLV7Kd5xr+cq9avvhwqzbH/taCRNURoeEpoPBK9pDyeukwSxwRPJ8fDgvYXd6SkaZ2TA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <!-- Bulma CSS /Modal -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
+    <!-- 웹 title -->
+    <title>Mallenge</title>
+    <!-- main CSS, js import -->
+    <link rel="stylesheet" href="../static/global.css">
+    <link rel="stylesheet" href="../static/main.css">
+    <script src="../static/main.js"></script>
+    <script>
+        function logout() {
+        $.removeCookie('mytoken');
+        alert('로그아웃!')
+        window.location.href='/login'
+      }
+      <!--유저 아이디 토큰에서 가져오는 법-->
+      // $('.userid').attr('id') != ""
+    </script>
+</head>
+
+<body>
+<!--유저 아이디 토큰에서 가져오는 법-->
+<!--<div id="{{nickname}}" class="userid"></div>-->
+
+<!--banner-->
+<nav class="menubar">
+    <a href="/"><img src="../static/logo_en.png" class="menuLogo"></a>
+    <ul class="menuItem">
+        <li><b>{{nickname}}</b>님</li>
+        <button type="button" class="btn btn-outline-dark" onclick="location.href='/mypage'"><i class="fas fa-user"></i></i></button>
+        <button type="button" class="btn btn-outline-dark" onclick="logout()">로그아웃</button>
+    </ul>
+</nav>
+
+<!--upload / modal -->
+<button class="upload-btn" onclick='$("#modal-post").addClass("is-active")'><span class="add">+</span></button>
+<div class="modal" id="modal-post">
+    <div class="modal-background" onclick='$("#modal-post").removeClass("is-active")'></div>
+    <div class="modal-content">
+        <div class="box">
+            <article class="media">
+                <div class="media-content">
+                    <div class="field">
+                        <div class="field">
+                            <label class="label">챌린지 이름을 정해주세요!</label>
+                            <p class="control">
+                            <input id="title" class="title"/>
+                            </p>
+                        </div>
+                        <div class="field" style="margin-top: 25px">
+                            <div class="mb-3">
+                                <label for="formFile" class="form-label">챌린지 이미지를 선택 해주세요!</label>
+                                <input id="challenge_img" class="form-control img-input" type="file" id="formFile">
+                            </div>
+                        </div>
+                        <div class="field period-input" style="margin-top: 25px">
+                            <div>
+                                <label class="label">시작 날짜</label>
+                                <input id="start-data" type="date" name="start-day">
+                            </div>
+                            <div>
+                                <label class="label">종료 날짜</label>
+                                <input id="end-data" type="date" name="end-day">
+                            </div>
+                        </div>
+                        <div class="field" style="margin-top: 25px">
+                            <label class="label">챌린지 한줄 소개 부탁드려요!</label>
+                            <p class="control">
+                    <textarea id="contents" class="textarea"></textarea>
+                            </p>
+                        </div>
+                        <nav class="level">
+                            <div class="level-left">
+                            </div>
+                            <div class="level-right">
+                                <div class="level-item">
+                                    <a class="button posting-btn" onclick="posting()">포스팅</a>
+                                </div>
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </div>
+    <button class="modal-close is-large" aria-label="close"
+            onclick='$("#modal-post").removeClass("is-active")'></button>
+</div>
+<section class="section">
+    <div id="post-box" class="container"></div>
+</section>
+
+<!--challenge List-->
+<div class="wrap">
+    <div id="challenge-list" class="row row-cols-md-5 g-4"></div>
+</div>
+</body>
+</html>

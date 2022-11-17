@@ -1,0 +1,101 @@
+b {
+    font-weight: 700;
+}
+
+.emphasis {
+    color: #F70511;;
+}
+
+/*진행률 바 수정*/
+progress {
+    width: 210px;
+    -webkit-appearance: none;
+    height: 10px;
+}
+
+::-webkit-progress-bar {
+    background-color: grey;
+    border-radius: 20px;
+}
+
+::-webkit-progress-value {
+    background-color: #F70511;
+    border-radius: 20px;
+}
+
+
+
+
+.profile {
+    font-size: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 150px;
+}
+
+/*challenge*/
+.wrap {
+    margin: auto;
+    width: 1400px;
+    padding: 30px;
+}
+
+.card-box {
+    position: relative;
+}
+.card-box:hover {
+    cursor:pointer;
+    transform: scale(1.1);
+}
+
+.disabled {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -60%);
+    z-index: 1;
+    font-size: 20px;
+    font-weight: bold;
+    color:#323232;
+}
+
+.challenge_img {
+    height: 200px;
+}
+
+.card-title {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.participants {
+    font-size: 16px;
+    font-weight: bold;
+    float: right;
+    color: #F70511;
+}
+
+.period {
+    font-weight: bold;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+/*imade*/
+.mypageSub {
+    max-width: 1200px;
+    width: 95%;
+    margin: 50px auto 0 auto;
+}
+
+/*100퍼 달성한 챌린지에 도장 찍기*/
+.sucessimg{
+    position: relative;
+}
+
+.sucess {
+    float: left;
+    position: absolute;
+    width: 120px;
+}
