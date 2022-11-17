@@ -68,7 +68,7 @@ function listing() {
             //console.log("new_certiArray: ", new_certiArray)
 
             //챌린지 id와 count를 객체로 만듦
-            let obj = {}
+            /*let obj = {}
             for ( let i = 0; i < new_certiArray.length; i++) {
                 let keyname = new_certiArray[i]["chall_id"]
                 if (obj.hasOwnProperty(keyname)) { //객체 안에 키값이 있냐
@@ -76,7 +76,7 @@ function listing() {
                 } else {
                     obj[keyname] = 1
                 }
-            }
+            }*/
             //console.log("내가 참여하는 obj : ", obj)
 
 
@@ -89,9 +89,10 @@ function listing() {
                 //let participants = 10 //certification에서 데이터 가져와야함
                 let start_date = new_challenge_rows[i]['start_date']
                 let end_date = new_challenge_rows[i]['end_date']
+                let content = new_challenge_rows[i]['content']
 
                 //전체 일수 구하기
-                const getDateDiff = (d1, d2) => {
+                /*const getDateDiff = (d1, d2) => {
                   const date1 = new Date(d1);
                   const date2 = new Date(d2);
 
@@ -105,7 +106,7 @@ function listing() {
                     return
                 }
                 //퍼센테이지 구하기
-                let datepercent = Math.floor(obj[chall_id] / dateNumber * 100)
+                let datepercent = Math.floor(obj[chall_id] / dateNumber * 100)*/
 
             //my_challenged에서 chall_id데이터 추출
                 let participants = 0;
@@ -136,8 +137,7 @@ function listing() {
                                 <div class="card-body">
                                     <h5 class="card-title">${title}<small class="participants">${participants}명 참여</small></h5>
                                     <h6 class="card-text period">기간 <span>${start_date}~${end_date}</span></h6>
-                                    <progress value="${obj[chall_id]}" max="${dateNumber}"></progress>
-                                    <p class="card-text">${datepercent}% 달성</p>
+                                    <p class="card-text">${content}</p>
                                 </div>
                             </div>
                         </div>`
@@ -149,8 +149,7 @@ function listing() {
                                 <div class="card-body">
                                     <h5 class="card-title">${title}<small class="participants">10명 참여</small></h5>
                                     <h6 class="card-text period">기간 <span>${start_date}~${end_date}</span></h6>
-                                    <progress value="${obj[chall_id]}" max="${dateNumber}"></progress>
-                                    <p class="card-text">${datepercent}% 달성</p>
+                                    <p class="card-text">${content}</p>
                                 </div>
                             </div>
                         </div>`

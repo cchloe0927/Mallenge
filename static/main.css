@@ -9,6 +9,7 @@
     border: 1px solid #F70511;
     background-color: #F70511;
     border-radius: 50%;
+    z-index: 2;
 }
 
 .add {
