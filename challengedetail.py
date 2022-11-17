@@ -132,6 +132,7 @@ def certi_get():
         # return jsonify({'result': 'fail', 'msg': '참가 완료!'})
 
     certi_list = list(db.certification.find({'chall_id': int(challenge_card_id)}, {'_id': False}))
+    certi_list.reverse()
     # user_nickname = user_info['nick']
     # print(user_nickname)
 

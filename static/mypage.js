@@ -27,7 +27,7 @@ function listing() {
             const new_challenge_rows = JSON.parse(challenge_rows).filter(function (element) {
                 return element.user_id == loginuser_id;
             });
-            console.log(new_challenge_rows);
+            //console.log(new_challenge_rows);
 
             //위에서 뽑아낸 데이터에서 챌린지값만 배열에서 넣음
             let allchallidArray = []
@@ -36,7 +36,7 @@ function listing() {
                 let allchallid = new_challenge_rows[k]['chall_id']
                 allchallidArray.push(allchallid)
             }
-            console.log(allchallidArray)
+            //console.log(allchallidArray)
 
             //챌린지 db에서 마이챌린지 챌린지값이랑 챌린지값이 같은 데이터를 배열로 만듦
             let challengeArray = []
@@ -47,7 +47,7 @@ function listing() {
                     }
                 }
             }
-            console.log("challengeArray :", challengeArray)
+            //console.log("challengeArray :", challengeArray)
 
             //확인 db에서 마이챌린지 챌린지값이랑 챌린지값이 같은 데이터를 배열로 만듦
             let certiArray = []
@@ -58,14 +58,14 @@ function listing() {
                     }
                 }
             }
-            console.log("certiArray :",certiArray)
+            //console.log("certiArray :",certiArray)
 
             //필터함수로 user_id가 똑같은 값의 챌린지만 뽑아냄
             certiArray = JSON.stringify(certiArray);
             const new_certiArray = JSON.parse(certiArray).filter(function (element) {
                 return element.user_id == loginuser_id;
             });
-            console.log("new_certiArray: ", new_certiArray)
+            //console.log("new_certiArray: ", new_certiArray)
 
             //챌린지 id와 count를 객체로 만듦
             let obj = {}
@@ -77,7 +77,7 @@ function listing() {
                     obj[keyname] = 1
                 }
             }
-            console.log("내가 참여하는 obj : ", obj)
+            //console.log("내가 참여하는 obj : ", obj)
 
 
 
@@ -177,8 +177,7 @@ function joinchall() {
 
             my_challenge_rows = JSON.stringify(my_challenge_rows);
 
-            console.log (my_challenge_rows)
-
+            //console.log (my_challenge_rows)
 
             //필터함수로 user_id가 똑같은 값의 챌린지만 뽑아냄
             const new_my_challenge_rows = JSON.parse(my_challenge_rows).filter(function (element) {
@@ -233,7 +232,7 @@ function joinchall() {
                     obj[keyname] = 1
                 }
             }
-            console.log("obj : ", obj)
+            //console.log("obj : ", obj)
             // const new_challenge_rows = JSON.parse(challenge_rows).filter(function (element) {
             //     return element.chall_id == new_my_challenge_rows['chall_id'];
             // });
@@ -286,11 +285,11 @@ function joinchall() {
                 }
 
                 let datepercent = Math.floor(obj[chall_id] / dateNumber * 100)
-                console.log("챌린지아이디 :", chall_id)
-                console.log("특정 챌린지 전체 기간 :", dateNumber)
-                console.log("특정 챌린지의 달성 일수 :", obj[chall_id])
-                console.log("% : ", datepercent )
-                console.log("-----------------------")
+                //console.log("챌린지아이디 :", chall_id)
+                //console.log("특정 챌린지 전체 기간 :", dateNumber)
+                //console.log("특정 챌린지의 달성 일수 :", obj[chall_id])
+                //console.log("% : ", datepercent )
+                //console.log("-----------------------")
                 //전체 일수 구하기 끝
 
                 let final_date = Number(end_date.split('-').join(''))
