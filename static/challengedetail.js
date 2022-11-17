@@ -12,7 +12,7 @@ $(document).ready(function(){
     const param = window.location.search;
     const paramData = new URLSearchParams(param)
     const challenge_card_id = paramData.get('challenge')
-    console.log(param, paramData, challenge_card_id)
+    //console.log(param, paramData, challenge_card_id)
 
 
 //           $.ajax({
@@ -64,7 +64,7 @@ function display() {
         data: {challenge : challenge_card_id},
         success: function (response) {
 
-            console.log(response['one_challenge','one_participant'])
+            //console.log(response['one_challenge','one_participant'])
 
             let one_title = response['one_challenge']['title']
             let one_image = response['one_challenge']['challenge_img']
@@ -111,11 +111,11 @@ function show_certi() {
             data: {challenge : challenge_card_id},
             success: function (response) {
 
-                console.log(response)
+                //console.log(response)
 
                 let rows = response['certilist']
 
-                 console.log(rows)
+                //console.log(rows)
                 for (let i = 0; i < rows.length; i++) {
 
                     let comment = rows[i]['comment']

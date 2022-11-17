@@ -68,7 +68,7 @@ function listing() {
                         participants++
                     }
                 }
-                console.log("chall_id :", chall_id, "participants :", participants)
+                //console.log("chall_id :", chall_id, "participants :", participants)
 
                 let final_date = Number(end_date.split('-').join(''))
                 //console.log(final_date)
@@ -91,7 +91,7 @@ function listing() {
                                     <p class="card-text">${content}</p>
                                 </div>
                             </div>
-                        </div>`
+                        </a>`
                 } else {
                     temp_html = `<div class="col card-box">
                             <div class="disabled">마감되었습니다.</div>
