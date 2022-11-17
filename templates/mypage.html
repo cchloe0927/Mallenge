@@ -32,15 +32,26 @@
     </script>
 </head>
 <body>
+<!--banner-->
 <nav class="menubar">
-    <a href="#"><img src="../static/logo_en.png" class="menuLogo"></a>
+    <a href="/"><img src="../static/logo_en.png" class="menuLogo"></a>
     <ul class="menuItem">
         <li><b>{{nickname}}</b>님</li>
         <button type="button" class="btn btn-outline-dark" onclick="logout()">로그아웃</button>
     </ul>
 </nav>
+
+
 <div class="profile">
     <b>{{nickname}}</b>님, 오늘도&nbsp;<b class="emphasis">맬린지</b>하세요!
+</div>
+
+<section class="mypageSub">
+    <h3>🏃내가 참여하는 챌린지</h3>
+</section>
+<!--challenge List-->
+<div class="wrap">
+    <div id="challenge-list2" class="row row-cols-md-5 g-4"></div>
 </div>
 
 <section class="mypageSub">
@@ -52,13 +63,6 @@
 </div>
 
 
-<section class="mypageSub">
-    <h3>🏃내가 참여하는 챌린지</h3>
-</section>
-<!--challenge List-->
-<div class="wrap">
-    <div id="challenge-list2" class="row row-cols-md-5 g-4"></div>
-</div>
 
 
 
